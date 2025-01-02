@@ -13,6 +13,15 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link text-muted my-2" href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale() == 'ar' ? 'en' : 'ar') }}" id="langSwitcher">
+                @if (LaravelLocalization::getCurrentLocale() == 'ar')
+                    <span class="flag-icon flag-icon-us"></span> 
+                @else
+                    <span class="flag-icon flag-icon-sa"></span> 
+                @endif
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
                 <span class="fe fe-grid fe-16"></span>
             </a>

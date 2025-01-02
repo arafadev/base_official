@@ -1,4 +1,3 @@
-
 @php
     $dir = LaravelLocalization::getCurrentLocale() == 'ar' ? 'assets-admin-rtl' : 'assets-admin';
 @endphp
@@ -13,8 +12,10 @@
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{ asset($dir) }}/css/simplebar.css">
     <!-- Fonts CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
     <!-- Icons CSS -->
     <link rel="stylesheet" href="{{ asset($dir) }}/css/feather.css">
     <link rel="stylesheet" href="{{ asset($dir) }}/css/select2.css">
@@ -28,4 +29,7 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ asset($dir) }}/css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="{{ asset($dir) }}/css/app-dark.css" id="darkTheme" disabled>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    @yield('css')
 </head>

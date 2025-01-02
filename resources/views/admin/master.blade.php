@@ -2,7 +2,7 @@
 <html lang="{{ LaravelLocalization::getCurrentLocale() }}">
 @include('admin.partials.head')
 
-<body class="vertical light @if(LaravelLocalization::getCurrentLocale() == 'ar') rtl @endif">
+<body class="vertical light @if (LaravelLocalization::getCurrentLocale() == 'ar') rtl @endif">
     <div class="wrapper">
         @include('admin.partials.navbar')
         @include('admin.partials.sidebar')
@@ -12,5 +12,4 @@
     </div> <!-- .wrapper -->
     @include('admin.partials.scripts')
 </body>
-
 </html>

@@ -14,12 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::name('site.')->controller(SiteController::class)->group(function () {
-    // Route::get('/', 'index')->name('index');
-
-    Route::get('/', function () {
-        return view('site.pages.index');
-    })->name('index');
-
+    Route::get('/', 'index')->name('index');
     Route::get('/about', 'about')->name('about');
     Route::get('/service', 'service')->name('service');
     Route::post('/contact/store', 'contactStore')->name('contact.store');
