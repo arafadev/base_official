@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 Route::redirect('/admin', '/admin/login');
@@ -17,7 +18,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
 
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin', 'as' => 'admin.'], function () {
+Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middleware' => ['auth:admin', 'localeViewPath', 'localeSessionRedirect', 'localizationRedirect'], 'as' => 'admin.'], function () {
    
     Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::get('profile', [AdminProfileController::class, 'index'])->name('profile');
