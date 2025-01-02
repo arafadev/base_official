@@ -13,11 +13,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-muted my-2" href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale() == 'ar' ? 'en' : 'ar') }}" id="langSwitcher">
+            <a class="nav-link text-muted my-2"
+                href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale() == 'ar' ? 'en' : 'ar') }}"
+                id="langSwitcher">
                 @if (LaravelLocalization::getCurrentLocale() == 'ar')
-                    <span class="flag-icon flag-icon-us"></span> 
+                    <span class="flag-icon flag-icon-us"></span>
                 @else
-                    <span class="flag-icon flag-icon-sa"></span> 
+                    <span class="flag-icon flag-icon-sa"></span>
                 @endif
             </a>
         </li>
@@ -41,10 +43,11 @@
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="{{ route('admin.logout')  }}">Logout</a>
+                <a class="dropdown-item" href="#">{{ __('admin.profile') }}</a>
+                <a class="dropdown-item" href="#">{{ __('admin.settings') }}</a>
+                <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                    style="color: red;">{{ __('admin.logout') }}</a>
             </div>
         </li>
     </ul>
-</nav>  
+</nav>

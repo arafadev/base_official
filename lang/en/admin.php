@@ -69,4 +69,5 @@ return [
     'instagram' => 'Instagram',
     'youtube'   => 'Youtube',
     'twitter'   => 'Twitter',
+    'profile'   => 'Profile',
 ];
