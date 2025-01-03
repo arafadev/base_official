@@ -19,7 +19,7 @@ class AdminAuthController extends Controller
 
             if (auth('admin')->user()->is_blocked) {
                 auth('admin')->logout();
-                return redirect()->back()->withInput()->withErrors(['status' => 'Not activated by the administration']);
+                return redirect()->back()->withInput()->withErrors(['status' => __('admin.your_account_is_blocked')]);
             }
 
             $notification = array(
@@ -28,7 +28,7 @@ class AdminAuthController extends Controller
             );
             return redirect()->route('admin.dashboard')->with($notification);
         } else {
-            return redirect()->back()->withInput()->withErrors(['loginError' => 'Invalid email or password.']);
+            return redirect()->back()->withInput()->withErrors(['loginError' => __('admin.invalid_email_or_password')]);
         }
     }
 

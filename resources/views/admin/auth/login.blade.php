@@ -32,12 +32,12 @@
                 <div class="form-group">
                     <label for="inputEmail" class="sr-only">{{ __('keywords.email') }}</label>
                     <input type="email" id="inputEmail" name="email" value="{{ old('email') }}"
-                        class="form-control form-control-lg" placeholder="{{ __('keywords.email') }} " required>
+                        class="form-control form-control-lg" placeholder="{{ __('keywords.email') }} " >
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="sr-only">{{ __('keywords.password') }} </label>
                     <input type="password" id="inputPassword" name="password" class="form-control form-control-lg"
-                        placeholder="{{ __('keywords.password') }}" required>
+                        placeholder="{{ __('keywords.password') }}" >
                 </div>
                 {{-- <div class="checkbox mb-3">
                     <label>
