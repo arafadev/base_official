@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset($dir) }}/css/jquery.steps.css">
     <link rel="stylesheet" href="{{ asset($dir) }}/css/jquery.timepicker.css">
     <link rel="stylesheet" href="{{ asset($dir) }}/css/quill.snow.css">
+    <link rel="stylesheet" href="{{ asset($dir) }}/css/dataTables.bootstrap4.css">
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" href="{{ asset($dir) }}/css/daterangepicker.css">
     <!-- App CSS -->
@@ -31,6 +32,9 @@
     <link rel="stylesheet" href="{{ asset($dir) }}/css/app-dark.css" id="darkTheme" disabled>
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    
+    <!-- Toastr CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     
     @yield('css')
 

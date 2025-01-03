@@ -13,6 +13,19 @@
 <script src="{{ asset('assets-admin') }}/js/datamaps-zoomto.js"></script>
 <script src="{{ asset('assets-admin') }}/js/datamaps.custom.js"></script>
 <script src="{{ asset('assets-admin') }}/js/Chart.min.js"></script>
+
+<script src='{{ asset('assets-admin') }}/js/jquery.dataTables.min.js'></script>
+<script src='{{ asset('assets-admin') }}/js/dataTables.bootstrap4.min.js'></script>
+<script>
+    $('#dataTable-1').DataTable({
+        autoWidth: true,
+        "lengthMenu": [
+            [16, 32, 64, -1],
+            [16, 32, 64, "All"]
+        ]
+    });
+</script>
+
 <script>
     /* defind global options */
     Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
@@ -212,8 +225,12 @@
     }
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
-
-
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    @if (session('success'))
+        toastr.success('{{ session('success') }}');
+    @endif
 </script>
 
 @yield('scripts')
