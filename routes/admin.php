@@ -27,7 +27,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::get('edit/{id}', [ServiceController::class, 'edit'])->name('services.edit');
             Route::post('update/{id}', [ServiceController::class, 'update'])->name('services.update');
             Route::get('delete/{id}', [ServiceController::class, 'delete'])->name('services.delete');
-            Route::delete('bulk-delete', [ServiceController::class, 'deleteSelected'])->name('services.deleteSelected');
+            Route::delete('deleteSelected', [ServiceController::class, 'deleteSelected'])->name('services.deleteSelected');
             
         });
     });

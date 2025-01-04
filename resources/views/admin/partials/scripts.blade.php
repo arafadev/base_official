@@ -233,4 +233,6 @@
     @endif
 </script>
 
+{{-- <script src="{{ asset('custom/js/table.js') }}"></script> --}}
+
 @yield('scripts')

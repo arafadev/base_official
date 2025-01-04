@@ -58,7 +58,7 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateServiceRequest $request, $id )
+    public function update(UpdateServiceRequest $request, $id)
     {
         $data = $request->validated();
         $service = Service::findOrFail($id);
@@ -69,7 +69,7 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete( $id)
+    public function delete($id)
     {
         $service = Service::findOrFail($id);
         $service->delete();
@@ -77,9 +77,9 @@ class ServiceController extends Controller
     }
 
     public function deleteSelected(Request $request)
-{
-    $ids = $request->input('ids', []);
-    Service::whereIn('id', $ids)->delete();
-    return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
-}
+    {
+        $ids = $request->input('ids', []);
+        Service::whereIn('id', $ids)->delete();
+        return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
+    }
 }
