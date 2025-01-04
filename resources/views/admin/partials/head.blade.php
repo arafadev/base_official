@@ -36,6 +36,8 @@
     <!-- Toastr CSS and JS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     
+    <link rel="stylesheet" href="{{ asset('custom/css/table.css') }}">
+
     @yield('css')
 
 </head>

@@ -23,7 +23,7 @@ return [
     'create_service'    => 'اضافه خدمه ',
     'actions' => 'التحكم',
     'enter_description' => 'ادخل الوصف',
-    'no_services_found' => 'لا يوجد خدمات متاحه',
+    'no_items_found' => 'لا يوجد عناصر متاحه',
     'enter_icon' => 'ادخل الايقونه',
     'title' => 'العنوان',
     'icon' => 'الايقونه',

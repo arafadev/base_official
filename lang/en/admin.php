@@ -95,7 +95,8 @@ return [
     'delete' => 'Delete',
     'cancel' => 'Cancel',
     'no_services_found' => 'No services found!',
-    'are_you_sure_deleteing_selected_elements' => 'Are you sure you want to delete the selected elements',
+    'are_you_sure_deleteing_selected_elements' => 'Are you sure you want to delete the selected elements!?',
     'confirmation' => 'Delete Confirmation📢',
     'progress_success'  => 'Operation done successfully',
+    'no_items_found' => 'No items found',
 ];
