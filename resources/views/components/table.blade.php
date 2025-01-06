@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="mb-2 page-title">{{ $pageTitle }}</h2>
+                <h2 class="mb-2 page-title">{{ $pageTitle }}</h2><hr>
 
                 <div class="page-title-right">
                     <x-button-link :href="$createRoute" :text="$createText" class="btn-primary" />

@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
-use App\Http\Controllers\Admin\Service\ServiceController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::redirect('/admin', '/admin/login');
@@ -28,7 +29,28 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::post('update/{id}', [ServiceController::class, 'update'])->name('services.update');
             Route::get('delete/{id}', [ServiceController::class, 'delete'])->name('services.delete');
             Route::delete('deleteSelected', [ServiceController::class, 'deleteSelected'])->name('services.deleteSelected');
-            
         });
+
+        Route::group(['prefix' => 'countries'], function () {
+            Route::get('/', [CountryController::class, 'index'])->name('countries.index');
+            Route::get('create', [CountryController::class, 'create'])->name('countries.create');
+            Route::post('store', [CountryController::class, 'store'])->name('countries.store');
+            Route::get('{id}', [CountryController::class, 'show'])->name('countries.show');
+            Route::get('edit/{id}', [CountryController::class, 'edit'])->name('countries.edit');
+            Route::post('update/{id}', [CountryController::class, 'update'])->name('countries.update');
+            Route::get('delete/{id}', [CountryController::class, 'delete'])->name('countries.delete');
+            Route::delete('deleteSelected', [CountryController::class, 'deleteSelected'])->name('countries.deleteSelected');
+        });
+
+
+
+
+
+
+
+
+
+
+
     });
 });

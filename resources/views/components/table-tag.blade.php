@@ -13,13 +13,19 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($items as $index => $item)
+        @forelse ($items as $item)
             <tr>
                 <td> <input type="checkbox" class="select-row" value="{{ $item['id'] }}"></td>
-                <td>{{ $index + 1 }}</td>
+                <td>{{ $item['id'] }}</td>
                 @foreach ($item as $key => $value)
                     @if (!in_array($key, ['id', 'actions']))
-                        <td>{{ $value }}</td>
+                        <td>
+                            @if (Str::contains($key, 'image') && filter_var($value, FILTER_VALIDATE_URL))
+                                <img src="{{ $value }}" alt="Image" style="max-width: 50px; height: auto;">
+                            @else
+                                {{ $value }}
+                            @endif
+                        </td>
                     @endif
                 @endforeach
                 @if (isset($actions))
