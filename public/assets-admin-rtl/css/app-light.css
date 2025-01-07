@@ -1196,6 +1196,11 @@ pre {
   .table tbody + tbody {
     border-top: 2px solid #e9ecef; }
 
+    table th {
+      color: black !important;
+      font-weight: 600;
+  }
+  
 .table-sm th,
 .table-sm td {
   padding: 0.3rem; }

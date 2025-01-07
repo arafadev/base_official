@@ -10,46 +10,30 @@
 
                 <div class="card shadow">
                     <div class="card-body">
-                        <form action="{{ route('admin.services.update', $service->id) }}') }}" method="post"
+                        <form action="{{ route('admin.services.update', $service->id) }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="title">{{ __('admin.title') }}</label>
-                                        <input type="text" id="title" name="title" value="{{ $service->title }}"
-                                            class="form-control" placeholder="{{ __('admin.enter_title') }}" required>
-                                        @error('title')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                    <x-input id="title" name="title" label="{{ __('admin.title') }}"
+                                        placeholder="{{ __('admin.enter_title') }}" :value="$service->title" :required="true" />
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="icon">{{ __('admin.icon') }}</label>
-                                        <input type="text" id="icon" name="icon" value="{{ $service->icon }}"
-                                            class="form-control" placeholder="{{ __('admin.enter_icon') }}" required>
-                                        @error('icon')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                    <x-input id="icon" name="icon" label="{{ __('admin.icon') }}"
+                                        placeholder="{{ __('admin.enter_icon') }}" :value="$service->icon" :required="true" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group mb-3">
-                                        <label for="description">{{ __('admin.description') }}</label>
-                                        <textarea required type="description" id="description" name="description" class="form-control"
-                                            placeholder="{{ __('admin.enter_description') }}"> {{ $service->description }}</textarea>
-                                        @error('description')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                    <x-textarea id="description" name="description" label="{{ __('admin.description') }}"
+                                        placeholder="{{ __('admin.enter_description') }}" :value="$service->description"
+                                        :required="true" />
                                 </div>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary">{{ __('admin.submit') }}</button>
-                                <button type="submit" class="btn btn-secondary   ">{{ __('admin.back') }}</button>
+                                <a href="{{ route('admin.services.index') }}"
+                                    class="btn btn-secondary">{{ __('admin.back') }}</a>
                             </div>
                         </form>
                     </div>
