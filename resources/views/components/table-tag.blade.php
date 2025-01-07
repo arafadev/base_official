@@ -8,28 +8,28 @@
             <th><input type="checkbox" id="select-all"></th>
             <th>#</th>
             @foreach ($headers as $header)
-                <th>{{ $header }}</th>
+                <th class="text-center" style="color: black; font-weight: 600;">{{ $header }}</th>
             @endforeach
         </tr>
     </thead>
     <tbody>
         @forelse ($items as $item)
             <tr>
-                <td> <input type="checkbox" class="select-row" value="{{ $item['id'] }}"></td>
-                <td>{{ $item['id'] }}</td>
+                <td class="text-center"> <input type="checkbox" class="select-row" value="{{ $item['id'] }}"></td>
+                <td class="text-center">{{ $item['id'] }}</td>
                 @foreach ($item as $key => $value)
                     @if (!in_array($key, ['id', 'actions']))
-                        <td>
+                        <td class="text-center">
                             @if (Str::contains($key, 'image') && filter_var($value, FILTER_VALIDATE_URL))
                                 <img src="{{ $value }}" alt="Image" style="max-width: 50px; height: auto;">
                             @else
-                                {{ $value }}
+                                {!! $value !!}
                             @endif
                         </td>
                     @endif
                 @endforeach
                 @if (isset($actions))
-                    <td>
+                    <td class="text-center">
                         @if (isset($actions['show']))
                             <x-icon-link :href="route($actions['show'], $item['id'])" class="show" icon="fe fe-eye" />
                         @endif

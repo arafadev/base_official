@@ -8135,6 +8135,11 @@ svg.navbar-brand-img {
   .table tbody tr th {
     color: #dee2e6; }
 
+    table th {
+      color: white !important;
+      font-weight: 600;
+  }
+
 .modal.fade.modal-slide .modal-dialog {
   background: #212529; }
 

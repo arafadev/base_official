@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -42,12 +43,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::delete('deleteSelected', [CountryController::class, 'deleteSelected'])->name('countries.deleteSelected');
         });
 
-
-
-
-
-
-
+        Route::group(['prefix' => 'admins'], function () {
+            Route::get('/', [AdminController::class, 'index'])->name('admins.index');
+            Route::get('create', [AdminController::class, 'create'])->name('admins.create');
+            Route::post('store', [AdminController::class, 'store'])->name('admins.store');
+            Route::get('{id}', [AdminController::class, 'show'])->name('admins.show');
+            Route::get('edit/{id}', [AdminController::class, 'edit'])->name('admins.edit');
+            Route::post('update/{id}', [AdminController::class, 'update'])->name('admins.update');
+            Route::get('delete/{id}', [AdminController::class, 'delete'])->name('admins.delete');
+            Route::delete('deleteSelected', [AdminController::class, 'deleteSelected'])->name('admins.deleteSelected');
+        });
 
 
 

@@ -18,6 +18,30 @@ class AuthBaseModel extends Authenticatable
     protected $hidden = ['password'];
 
 
+    public function setPasswordAttribute($value)
+    {
+        if (!empty($value)) {
+            $this->attributes['password'] = bcrypt($value);
+        } 
+    }
+
+    public function setAvatarAttribute($value)
+    {
+        if (!empty($value) && is_file($value)) {
+            if (isset($this->attributes['avatar'])) {
+                $this->deleteFile($this->attributes['avatar'], static::IMAGEPATH);
+            }
+            $this->attributes['avatar'] = $this->uploadAllTyps($value, static::IMAGEPATH);
+        }
+    }
+
+    public function getAvatarAttribute()
+    {
+        if (!empty($this->attributes['avatar'])) {
+            return $this->getImage($this->attributes['avatar'], static::IMAGEPATH);
+        }
+        return $this->defaultImage(static::IMAGEPATH);
+    }
 
     protected static function boot()
     {
