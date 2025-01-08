@@ -115,6 +115,7 @@ return [
     'enter_country_code' => 'Enter Country Code',
     'choose_file' => 'Choose File',
     'edit_admin'    => 'Edit Admin',
+    'show_admin'    => 'Show Admin',
     'admins' => 'Admins',
     'blocked' => 'Blocked',
     'not_blocked' => 'Not Blocked',
