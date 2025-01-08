@@ -37,7 +37,9 @@ class AdminController extends Controller
     }
 
     public function show($id){
-        return ;
+       $countries = Country::get();
+       $admin = Admin::findOrFail($id);
+        return view('admin.admins.show', get_defined_vars());
     }
 
 

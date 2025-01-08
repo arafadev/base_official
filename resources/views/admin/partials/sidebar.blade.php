@@ -22,7 +22,7 @@
                 icon="fe fe-home"></x-sidebar-tab>
         </ul>
         <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Components</span>
+            <span>Sections</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <x-sidebar-tab href="{{ route('admin.admins.index') }}" icon="fe fe-users"
