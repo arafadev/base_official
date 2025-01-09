@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\RegionController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Provider\ProviderController;
+use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
@@ -76,6 +77,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::post('update/{id}', [ProviderController::class, 'update'])->name('providers.update');
             Route::get('delete/{id}', [ProviderController::class, 'delete'])->name('providers.delete');
             Route::delete('deleteSelected', [ProviderController::class, 'deleteSelected'])->name('providers.deleteSelected');
+        });
+        Route::group(['prefix' => 'regions'], function () {
+            Route::get('/', [RegionController::class, 'index'])->name('regions.index');
+            Route::get('create', [RegionController::class, 'create'])->name('regions.create');
+            Route::post('store', [RegionController::class, 'store'])->name('regions.store');
+            Route::get('{id}', [RegionController::class, 'show'])->name('regions.show');
+            Route::get('edit/{id}', [RegionController::class, 'edit'])->name('regions.edit');
+            Route::post('update/{id}', [RegionController::class, 'update'])->name('regions.update');
+            Route::get('delete/{id}', [RegionController::class, 'delete'])->name('regions.delete');
+            Route::delete('deleteSelected', [RegionController::class, 'deleteSelected'])->name('regions.deleteSelected');
         });
 
     });

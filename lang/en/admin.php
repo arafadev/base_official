@@ -147,4 +147,10 @@ return [
 'show_user' => 'Show User',
 'edit_user' => 'Edit User',
 'is_approved' => 'Approval Status',
+'providers' => 'Providers',
+'country'   => 'Country',
+'select_country_id'=> 'Select Country',
+'region_name'   => 'Region Name',
+
+
 ];

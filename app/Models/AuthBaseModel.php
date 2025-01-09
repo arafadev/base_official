@@ -21,6 +21,7 @@ class AuthBaseModel extends Authenticatable
     protected $hidden = ['password'];
 
     protected $casts = [
+        'password' => 'hashed',
         'email_verified_at' => 'datetime',
         'is_approved' => 'boolean',
         'is_notify'  => 'boolean',

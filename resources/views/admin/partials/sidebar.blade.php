@@ -43,6 +43,11 @@
             </x-sidebar-tab>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
+            <x-sidebar-tab href="{{ route('admin.regions.index') }}" icon="fe fe-globe"
+                name="{{ __('admin.regions') }}">
+            </x-sidebar-tab>
+        </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
             <x-sidebar-tab href="{{ route('admin.services.index') }}" icon="fe fe-briefcase"
                 name="{{ __('admin.services') }}">
             </x-sidebar-tab>

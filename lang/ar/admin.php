@@ -90,4 +90,10 @@ return [
 'edit_provider' => 'تعديل المزود',
 'providers' => 'المزودين',
 'is_approved' => 'حاله الموافقه',
+'country' => 'الدوله',
+'select_country_id'=> 'اختر دوله',
+'region_name'   => 'اسم المنطقه',
+'country_id'   => 'الدوله',
+'arabic' => 'العربية',
+'english' => 'الانجليزية',
 ];

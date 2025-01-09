@@ -27,5 +27,13 @@ class User extends AuthBaseModel
         'code',
         'code_expire',
     ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
 
 }
