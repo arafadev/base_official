@@ -52,7 +52,7 @@
                                 <div class="col-md-6">
                                     <x-checkbox id="is_active" name="is_active" label="{{ __('admin.is_active') }}"  :value="$user->is_active"/><br>
                                     <x-checkbox id="is_notify" name="is_notify" label="{{ __('admin.is_notify') }}"  :value="$user->is_notify"/><br>
-                                    <x-checkbox id="is_blocked" name="is_blocked" label="{{ __('admin.is_blocked') }}"  :value="$user->is_blocked" />
+                                    <x-checkbox id="is_blocked" name="is_blocked" label="{{ __('admin.block_account') }}"  :value="$user->is_blocked" />
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center mt-3">

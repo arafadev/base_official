@@ -11,8 +11,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends AuthBaseModel
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
     const IMAGEPATH = 'users';
 
     protected $fillable = [
@@ -30,12 +28,4 @@ class User extends AuthBaseModel
         'code_expire',
     ];
 
-    protected $hidden = [
-        'remember_token',
-    ];
-    
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
 }

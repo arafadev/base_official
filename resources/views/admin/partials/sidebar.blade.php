@@ -29,9 +29,14 @@
             </x-sidebar-tab>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <x-sidebar-tab href="{{ route('admin.users.index') }}" icon="fe fe-globe" name="{{ __('admin.users') }}">
+            <x-sidebar-tab href="{{ route('admin.providers.index') }}" icon="fe fe-user-plus" name="{{ __('admin.providers') }}">
             </x-sidebar-tab>
         </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <x-sidebar-tab href="{{ route('admin.users.index') }}" icon="fe fe-user" name="{{ __('admin.users') }}">
+            </x-sidebar-tab>
+        </ul>
+        
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <x-sidebar-tab href="{{ route('admin.countries.index') }}" icon="fe fe-globe"
                 name="{{ __('admin.countries') }}">

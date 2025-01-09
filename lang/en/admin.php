@@ -122,7 +122,7 @@ return [
     'is_notify' => 'Notify Status',
     'notifiable'    => 'Notifiable',
     'not_notifiable' => 'Not Notifiable',
-    'is_blocked'    => 'Block Status',
+    'is_blocked'    => 'Account Status',
     'image' => 'Image',
     'name'  => 'Name',
     'phone'=> 'Phone',
@@ -146,4 +146,5 @@ return [
 'create_user'   => 'Add User',
 'show_user' => 'Show User',
 'edit_user' => 'Edit User',
+'is_approved' => 'Approval Status',
 ];

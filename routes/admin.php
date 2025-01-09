@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Provider\ProviderController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
@@ -66,8 +67,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::delete('deleteSelected', [UserController::class, 'deleteSelected'])->name('users.deleteSelected');
         });
 
-
-
+        Route::group(['prefix' => 'providers'], function () {
+            Route::get('/', [ProviderController::class, 'index'])->name('providers.index');
+            Route::get('create', [ProviderController::class, 'create'])->name('providers.create');
+            Route::post('store', [ProviderController::class, 'store'])->name('providers.store');
+            Route::get('{id}', [ProviderController::class, 'show'])->name('providers.show');
+            Route::get('edit/{id}', [ProviderController::class, 'edit'])->name('providers.edit');
+            Route::post('update/{id}', [ProviderController::class, 'update'])->name('providers.update');
+            Route::get('delete/{id}', [ProviderController::class, 'delete'])->name('providers.delete');
+            Route::delete('deleteSelected', [ProviderController::class, 'deleteSelected'])->name('providers.deleteSelected');
+        });
 
     });
 });

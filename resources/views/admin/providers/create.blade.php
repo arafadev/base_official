@@ -1,16 +1,16 @@
 @extends('admin.master')
 
-@section('title', __('admin.create_admin'))
+@section('title', __('admin.create_provider'))
 
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="h5 page-title">{{ __('admin.create_admin') }}</h2>
+                <h2 class="h5 page-title">{{ __('admin.create_provider') }}</h2>
 
                 <div class="card shadow">
                     <div class="card-body">
-                        <form action="{{ route('admin.admins.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.providers.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -51,7 +51,8 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <x-checkbox id="is_notify" name="is_notify" label="{{ __('admin.is_notify') }}" /><br>
+                                    <x-checkbox id="is_active" name="is_active" label="{{ __('admin.is_active') }}" /><br>
+                                    <x-checkbox id="is_approved" name="is_approved" label="{{ __('admin.is_approved') }}" /><br>
                                     <x-checkbox id="is_blocked" name="is_blocked" label="{{ __('admin.block_account') }}" />
                                 </div>
                             </div>
