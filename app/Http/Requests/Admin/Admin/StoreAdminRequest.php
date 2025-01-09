@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Admins;
+namespace App\Http\Requests\Admin\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAdminRequest extends FormRequest
+class StoreAdminRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,9 +16,9 @@ class UpdateAdminRequest extends FormRequest
         return [
             'name'    => 'required|string',
             'country_code'  => 'required|exists:countries,country_code',
-            'phone'     => 'required|unique:admins,phone,' . $this->id ,
-            'email'     => 'required|unique:admins,email,' . $this->id ,
-            'password' => 'nullable|string',
+            'phone'     => 'required|unique:admins,phone',
+            'email'     => 'required|unique:admins,email',
+            'password'  => 'required',
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', 
             'is_notify' => 'nullable|boolean',
             'is_blocked' => 'nullable|boolean',

@@ -25,24 +25,22 @@
             <span>Sections</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <x-sidebar-tab href="{{ route('admin.admins.index') }}" icon="fe fe-users"
-                name="{{ __('admin.admins') }}">
+            <x-sidebar-tab href="{{ route('admin.admins.index') }}" icon="fe fe-users" name="{{ __('admin.admins') }}">
             </x-sidebar-tab>
         </ul>
-        
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <x-sidebar-tab href="{{ route('admin.services.index') }}" icon="fe fe-briefcase"
-                name="{{ __('admin.services') }}">
+            <x-sidebar-tab href="{{ route('admin.users.index') }}" icon="fe fe-globe" name="{{ __('admin.users') }}">
             </x-sidebar-tab>
         </ul>
-
-      
-
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <x-sidebar-tab href="{{ route('admin.countries.index') }}" icon="fe fe-globe"
                 name="{{ __('admin.countries') }}">
             </x-sidebar-tab>
         </ul>
-
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <x-sidebar-tab href="{{ route('admin.services.index') }}" icon="fe fe-briefcase"
+                name="{{ __('admin.services') }}">
+            </x-sidebar-tab>
+        </ul>
     </nav>
 </aside>

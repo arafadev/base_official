@@ -79,5 +79,9 @@ return [
 'enter_phone'   => 'أدخل الهاتف',
 'enter_image'   => 'ارفع صوره',
 'enter_email' => 'أدخل الايميل',
-''
+'users'    => 'المستخدمين',
+'is_active' => 'حاله التفعيل',
+'create_user'   => 'اضافه مستخدم',
+'show_user' => 'عرض المستخدم',
+'edit_user' => 'تعديل المستخدم',
 ];

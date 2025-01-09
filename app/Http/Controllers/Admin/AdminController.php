@@ -6,10 +6,8 @@ use App\Models\Admin;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Admins\StoreAdminRequest;
-use App\Http\Requests\Admin\Admins\UpdateAdminRequest;
-use App\Http\Requests\Admin\Country\StoreCountryRequest;
-use App\Http\Requests\Admin\Country\UpdateCountryRequest;
+use App\Http\Requests\Admin\Admin\StoreAdminRequest;
+use App\Http\Requests\Admin\Admin\UpdateAdminRequest;
 
 class AdminController extends Controller
 
