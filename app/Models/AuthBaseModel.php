@@ -18,28 +18,26 @@ class AuthBaseModel extends Authenticatable
 
     const IMAGEPATH = 'users';
 
-    protected $hidden = ['password'];
+    // protected $hidden = ['password'];
 
     protected $casts = [
         'password' => 'hashed',
-        'email_verified_at' => 'datetime',
-        'is_approved' => 'boolean',
         'is_notify'  => 'boolean',
         'is_blocked' => 'boolean',
       ];
 
-    
+
   public function getFullPhoneAttribute()
   {
       return $this->attributes['country_code'] . $this->attributes['phone'];
   }
 
-    public function setPasswordAttribute($value)
-    {
-        if (!empty($value)) {
-            $this->attributes['password'] = bcrypt($value);
-        } 
-    }
+//   public function setPasswordAttribute($value)
+//   {
+//       if (!empty($value)) {
+//           $this->attributes['password'] = bcrypt($value);
+//       } 
+//   }
 
     public function setAvatarAttribute($value)
     {

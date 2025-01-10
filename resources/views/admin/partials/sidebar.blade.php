@@ -52,5 +52,18 @@
                 name="{{ __('admin.services') }}">
             </x-sidebar-tab>
         </ul>
+
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <x-sidebar-tab href="{{ route('admin.site_settings.index') }}" icon="fe fe-tool"
+                name="{{ __('admin.site_settings') }}">
+            </x-sidebar-tab>
+        </ul>
+
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <x-sidebar-tab href="{{ route('admin.reports.index') }}" icon="fe fe-tool"
+                name="{{ __('admin.reports') }}">
+            </x-sidebar-tab>
+        </ul>
+
     </nav>
 </aside>

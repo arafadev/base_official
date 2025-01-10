@@ -10,11 +10,7 @@ use App\Models\Region;
 
 class RegionTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+   
     public function run()
     {
         $remote = isset($_SERVER["REMOTE_ADDR"]) ?? false;

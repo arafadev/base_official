@@ -24,6 +24,10 @@
         <input type="password" id="{{ $id }}" name="{{ $name }}" class="form-control"
             placeholder="{{ $placeholder }}" @if (isset($required) && $required) required @endif
             @if (isset($disabled) && $disabled) disabled @endif>
+    @elseif (isset($type) && $type === 'number')
+        <input type="number" id="{{ $id }}" name="{{ $name }}" class="form-control"
+            placeholder="{{ $placeholder }}" @if (isset($required) && $required) required @endif
+            @if (isset($disabled) && $disabled) disabled @endif>
     @else
         <input type="text" id="{{ $id }}" name="{{ $name }}" class="form-control"
             placeholder="{{ $placeholder }}" value="{{ old($name, $value ?? '') }}"

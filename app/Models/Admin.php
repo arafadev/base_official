@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\AuthBaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends AuthBaseModel
 {

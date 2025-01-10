@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\RegionController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ProviderController;
+use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
@@ -87,6 +89,24 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::post('update/{id}', [RegionController::class, 'update'])->name('regions.update');
             Route::get('delete/{id}', [RegionController::class, 'delete'])->name('regions.delete');
             Route::delete('deleteSelected', [RegionController::class, 'deleteSelected'])->name('regions.deleteSelected');
+        });
+        Route::group(['prefix' => 'site_settings'], function () {
+            Route::get('/', [SiteSettingController::class, 'index'])->name('site_settings.index');
+            Route::get('create', [SiteSettingController::class, 'create'])->name('site_settings.create');
+            Route::post('store', [SiteSettingController::class, 'store'])->name('site_settings.store');
+            Route::get('edit/{id}', [SiteSettingController::class, 'edit'])->name('site_settings.edit');
+            Route::post('update', [SiteSettingController::class, 'update'])->name('site_settings.update');
+            Route::get('delete/{id}', [SiteSettingController::class, 'delete'])->name('site_settings.delete');
+            Route::delete('deleteSelected', [SiteSettingController::class, 'deleteSelected'])->name('site_settings.deleteSelected');
+        });
+        Route::group(['prefix' => 'reports'], function () {
+            Route::get('/', [ReportController::class, 'index'])->name('reports.index');
+            Route::get('create', [SiteSettingController::class, 'create'])->name('reports.create');
+            Route::post('store', [SiteSettingController::class, 'store'])->name('reports.store');
+            Route::get('edit/{id}', [SiteSettingController::class, 'edit'])->name('reports.edit');
+            Route::post('update', [SiteSettingController::class, 'update'])->name('reports.update');
+            Route::get('delete/{id}', [SiteSettingController::class, 'delete'])->name('reports.delete');
+            Route::delete('deleteSelected', [SiteSettingController::class, 'deleteSelected'])->name('reports.deleteSelected');
         });
 
     });
