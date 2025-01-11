@@ -103,6 +103,7 @@ return [
 'address'   => 'العنوان',
 'vat'   => 'نسبه الضريبه المضافه',
 'admin_percentage'  => 'نسبه الاداره ',
+'select_all' => 'اختر الكل',
 'show_site_settings' => 'عرض الاعدادات العامه',
 
 ];

@@ -12,6 +12,7 @@ class CountryController extends Controller
 
 {   public function index()
     {
+        // $this->authorize('read', Country::class); 
         return view('admin.countries.index' , ['countries' => Country::get()]);
     }
 

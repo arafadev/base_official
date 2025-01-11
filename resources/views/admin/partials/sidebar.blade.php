@@ -25,23 +25,25 @@
             <span>Sections</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
+
             <x-sidebar-tab href="{{ route('admin.admins.index') }}" icon="fe fe-users" name="{{ __('admin.admins') }}">
             </x-sidebar-tab>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <x-sidebar-tab href="{{ route('admin.providers.index') }}" icon="fe fe-user-plus" name="{{ __('admin.providers') }}">
+            <x-sidebar-tab href="{{ route('admin.providers.index') }}" icon="fe fe-user-plus"
+                name="{{ __('admin.providers') }}">
             </x-sidebar-tab>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <x-sidebar-tab href="{{ route('admin.users.index') }}" icon="fe fe-user" name="{{ __('admin.users') }}">
             </x-sidebar-tab>
         </ul>
-        
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <x-sidebar-tab href="{{ route('admin.countries.index') }}" icon="fe fe-globe"
-                name="{{ __('admin.countries') }}">
-            </x-sidebar-tab>
+                <x-sidebar-tab href="{{ route('admin.countries.index') }}" icon="fe fe-globe"
+                    name="{{ __('admin.countries') }}">
+                </x-sidebar-tab>
         </ul>
+
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <x-sidebar-tab href="{{ route('admin.regions.index') }}" icon="fe fe-globe"
                 name="{{ __('admin.regions') }}">
@@ -65,5 +67,60 @@
             </x-sidebar-tab>
         </ul>
 
+        <p class="text-muted nav-heading mt-4 mb-1">
+            <span>Rlole & Permissions Section</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">Role & Permissions</span>
+                </a>
+                {{-- <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="./ui-color.html"><span class="ml-1 item-text">Role &
+                                Permission</span>
+                        </a>
+                    </li>
+                </ul> --}}
+                <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="{{ route('admin.roles.index') }}"><span
+                                class="ml-1 item-text">All Roles
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+
+
+                <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="{{ route('admin.role.roles_has_permission.create') }}"><span
+                                class="ml-1 item-text">Roles Has Permission
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="{{ route('admin.role.show_roles_has_permission.show') }}"><span
+                                class="ml-1 item-text">Show Roles Has Permission
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="{{ route('admin.permissions.index') }}"><span
+                                class="ml-1 item-text">All
+                                Permission</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </nav>
 </aside>

@@ -20,7 +20,7 @@ return new class extends Migration
 			$table->string('phone');
 			$table->string('password');
 			$table->string('avatar')->nullable();
-			// $table->integer('role_id')->nullable();
+            $table->foreignId('role_id')->nullable()->constrained('roles'); 
 			$table->boolean('is_blocked')->default(0);
 			$table->boolean('is_notify')->default(true);
 			$table->softDeletes();

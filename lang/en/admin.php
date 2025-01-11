@@ -151,6 +151,7 @@ return [
 'country'   => 'Country',
 'select_country_id'=> 'Select Country',
 'region_name'   => 'Region Name',
+'select_all' => 'Select All',
 
 
 ];

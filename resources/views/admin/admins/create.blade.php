@@ -44,6 +44,10 @@
                                         :required="true" />
                                 </div>
                                 <div class="col-md-6">
+                                    <x-select id="role_id" label="{{ __('admin.role') }}" name="role_id"
+                                        :options="$roles" valueKey="id" nameKey="name" :required="true"  />
+                                </div>
+                                <div class="col-md-6">
                                     <x-file id="avatar" name="avatar" label="{{ __('admin.enter_image') }}"
                                         :required="true" />
                                 </div>

@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\Admin\RoleAndPermissions\RoleController;
+use App\Http\Controllers\Admin\RoleAndPermissions\PermissionController;
 
 Route::redirect('/admin', '/admin/login');
 
@@ -107,6 +109,30 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::post('update', [SiteSettingController::class, 'update'])->name('reports.update');
             Route::get('delete/{id}', [SiteSettingController::class, 'delete'])->name('reports.delete');
             Route::delete('deleteSelected', [SiteSettingController::class, 'deleteSelected'])->name('reports.deleteSelected');
+        });
+
+        Route::group(['prefix' => 'permissions'], function () {
+            Route::get('/', [PermissionController::class, 'index'])->name('permissions.index');
+            Route::get('create', [PermissionController::class, 'create'])->name('permissions.create');
+            // Route::post('store', [PermissionController::class, 'store'])->name('permissions.store');
+            // Route::get('edit/{id}', [PermissionController::class, 'edit'])->name('permissions.edit');
+            // Route::post('update', [PermissionController::class, 'update'])->name('permissions.update');
+            // Route::get('delete/{id}', [PermissionController::class, 'delete'])->name('permissions.delete');
+            Route::delete('deleteSelected', [PermissionController::class, 'deleteSelected'])->name('permissions.deleteSelected');
+        });
+        Route::group(['prefix' => 'roles'], function () {
+            Route::get('/', [RoleController::class, 'index'])->name('roles.index');
+            Route::get('create', [RoleController::class, 'create'])->name('roles.create');
+            Route::post('store', [RoleController::class, 'store'])->name('roles.store');
+            Route::get('edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+            Route::post('update/{id}', [RoleController::class, 'update'])->name('roles.update');
+            Route::get('create/roles_has_permission', [RoleController::class, 'createRoleHasPermission'])->name('role.roles_has_permission.create');
+            Route::post('store/roles_has_permission', [RoleController::class, 'storeRoleHasPermission'])->name('role.roles_has_permission.store');
+            Route::get('show/roles_has_permission', [RoleController::class, 'show_roles_has_permission'])->name('role.show_roles_has_permission.show');
+            Route::get('edit/roles_has_permission/{role_id}', [RoleController::class, 'edit_roles_has_permission'])->name('role.edit_roles_has_permission.edit');
+            Route::post('update/roles_has_permission/{role_id}', [RoleController::class, 'updateRoleHasPermission'])->name('role.roles_has_permission.update');
+            Route::get('delete/{id}', [RoleController::class, 'delete'])->name('roles.delete');
+            Route::delete('deleteSelected', [RoleController::class, 'deleteSelected'])->name('roles.deleteSelected');
         });
 
     });
