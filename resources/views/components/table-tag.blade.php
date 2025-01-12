@@ -5,8 +5,8 @@
 <table class="table datatables" id="dataTable-1">
     <thead>
         <tr>
-            <th><input type="checkbox" id="select-all"></th>
-            <th>#</th>
+            <th class="text-center"><input type="checkbox" id="select-all"></th>
+            <th class="text-center">#</th>
             @foreach ($headers as $header)
                 <th class="text-center" style="color: black; font-weight: 600;">{{ $header }}</th>
             @endforeach

@@ -14,16 +14,20 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="name">{{ __('admin.country_name') }}</label>
-                                        <input type="text" id="name" name="name" value="{{ $country->name }}"
-                                            class="form-control" placeholder="{{ __('admin.country_name') }}" required>
-                                        @error('name')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                @foreach (langsWithLabels() as $localeCode => $localeName)
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="name_{{ $localeCode }}">
+                                                {{ __('admin.name') }} ({{ $localeName }})
+                                            </label>
+                                            <input type="text" id="name_{{ $localeCode }}"
+                                                name="name[{{ $localeCode }}]" class="form-control"
+                                                value="{{ old('name.' . $localeCode, $country->getAllTranslations()[$localeCode] ?? '') }}"
+                                                placeholder="{{ __('admin.enter_name') }} ({{ $localeName }})" required>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
+
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label for="country_code">{{ __('admin.country_code') }}</label>
@@ -35,8 +39,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label for="iso2">{{ __('admin.iso2') }}</label>
@@ -48,6 +51,9 @@
                                         @enderror
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label for="iso3">{{ __('admin.iso3') }}</label>
@@ -61,28 +67,10 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="custom-file mb-3">
-                                        <input type="file" class="custom-file-input" id="image" name="image"
-                                            onchange="previewImage(event)">
-                                        <label class="custom-file-label"
-                                            for="image">{{ __('admin.choose_file') }}</label>
-                                        @error('image')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                    <x-file id="image" name="image" label="{{ __('admin.enter_image') }}"
+                                        :required="false" :src="$country->image" />
                                 </div>
                             </div>
-
-                            <div class="col-md-6">
-                                <div class="row justify-content-center mt-4">
-                                    <div id="image-preview-container" class="text-center">
-                                        <img id="image-preview" src="{{ $country->image }}"
-                                            alt="{{ __('admin.country_image') }}" class="rounded-circle img-fluid"
-                                            style="width: 150px; height: 150px; object-fit: cover; display: {{ $country->image ? 'block' : 'none' }};">
-                                    </div>
-                                </div>
-                            </div>
-
 
                             <div class="d-flex justify-content-center mt-3">
                                 <button type="submit" class="btn btn-primary mx-2">{{ __('admin.submit') }}</button>

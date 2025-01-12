@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Admins;
+namespace App\Http\Requests\Admin\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAdminRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -20,6 +20,7 @@ class StoreAdminRequest extends FormRequest
             'email'     => 'required|unique:admins,email',
             'password'  => 'required',
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', 
+            'is_active' => 'nullable|boolean',
             'is_notify' => 'nullable|boolean',
             'is_blocked' => 'nullable|boolean',
         ];
@@ -34,6 +35,9 @@ class StoreAdminRequest extends FormRequest
             'email'        => __('admin.email'),
             'password'     => __('admin.password'),
             'image'        => __('admin.image'),
+            'is_active'        => __('admin.is_active'),
+            'is_blocked'        => __('admin.is_blocked'),
+            'is_notify'        => __('admin.is_notify'),
         ];
     }
 }

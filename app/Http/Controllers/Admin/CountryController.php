@@ -10,7 +10,18 @@ use App\Http\Requests\Admin\Country\UpdateCountryRequest;
 
 class CountryController extends Controller
 
-{   public function index()
+{
+    
+    public function __construct()
+    {
+        $this->middleware('permission:countries.index')->only('index');
+        $this->middleware('permission:countries.create')->only(['create', 'store']);
+        $this->middleware('permission:countries.edit')->only(['edit', 'update']);
+        $this->middleware('permission:countries.delete')->only('destroy, deleteSelected');
+    }
+
+
+    public function index()
     {
         return view('admin.countries.index' , ['countries' => Country::get()]);
     }

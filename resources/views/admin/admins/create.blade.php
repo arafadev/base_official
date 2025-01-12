@@ -44,6 +44,10 @@
                                         :required="true" />
                                 </div>
                                 <div class="col-md-6">
+                                    <x-select id="role_id" label="{{ __('admin.role') }}" name="role_id"
+                                        :options="$roles" valueKey="id" nameKey="name" :required="true"  />
+                                </div>
+                                <div class="col-md-6">
                                     <x-file id="avatar" name="avatar" label="{{ __('admin.enter_image') }}"
                                         :required="true" />
                                 </div>
@@ -52,7 +56,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <x-checkbox id="is_notify" name="is_notify" label="{{ __('admin.is_notify') }}" /><br>
-                                    <x-checkbox id="is_blocked" name="is_blocked" label="{{ __('admin.is_blocked') }}" />
+                                    <x-checkbox id="is_blocked" name="is_blocked" label="{{ __('admin.block_account') }}" />
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center mt-3">

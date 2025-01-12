@@ -6,26 +6,29 @@ use App\Models\Admin;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Admins\StoreAdminRequest;
-use App\Http\Requests\Admin\Admins\UpdateAdminRequest;
-use App\Http\Requests\Admin\Country\StoreCountryRequest;
-use App\Http\Requests\Admin\Country\UpdateCountryRequest;
+use App\Http\Requests\Admin\Admin\StoreAdminRequest;
+use App\Http\Requests\Admin\Admin\UpdateAdminRequest;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 
 {   public function index()
     {
-        return view('admin.admins.index' , ['admins' => Admin::get()]);
+        return view('admin.admins.index' , ['admins' => Admin::with('role')->get()]);
     }
 
     public function create(){
-        return view('admin.admins.create', ['countries' => Country::get()]);
+        $roles = Role::get();
+        $countries = Country::get();
+        return view('admin.admins.create', get_defined_vars());
     }
 
     public function store(StoreAdminRequest  $request)
     {
         $data = $request->validated();
-        Admin::create($data);
+        $role_name = Role::findOrFail($data['role_id'])->name;
+        $admin = Admin::create($data);
+        $admin->assignRole($role_name); 
         return redirect()->route('admin.admins.index')->with('success', __('admin.progress_success'));
     }
 
@@ -33,6 +36,7 @@ class AdminController extends Controller
     {
        $admin =  Admin::findOrFail($id);
        $countries = Country::get();
+       $roles = Role::get();
         return view('admin.admins.edit'  ,get_defined_vars());
     }
 
@@ -47,7 +51,12 @@ class AdminController extends Controller
     {
         $admin = Admin::findOrFail($id);
         $data = $request->validated();
+    
         $admin->update($data);
+    
+        $role_name = Role::findOrFail($data['role_id'])->name;
+        $admin->syncRoles([$role_name]); 
+    
         return redirect()->route('admin.admins.index')->with('success', __('admin.progress_success'));
     }
     

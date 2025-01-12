@@ -16,6 +16,7 @@ class AdminTableSeeder extends Seeder
             'phone'        => '555105813',
             'password'     => Hash::make('123456'),
             'country_code' => '966',
+            'role_id'      => 1,
         ]);
 
         Admin::factory()->count(9)->create();

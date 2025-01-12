@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Enums\ProviderApproved;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -21,7 +22,7 @@ return new class extends Migration
             $table->string('avatar', 50)->nullable();
             $table->boolean('is_active')->default(false);
             $table->boolean('is_blocked')->default(false);
-            $table->boolean('is_approved')->default(0);
+            $table->boolean('is_approved')->default(ProviderApproved::PENDING);
             $table->string('code', 10)->nullable();
             $table->timestamp('code_expire')->nullable();
             $table->softDeletes();

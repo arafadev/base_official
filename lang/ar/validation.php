@@ -140,6 +140,11 @@ return [
     |
     */
 
+    'attributes' => [
+        'name.ar' => 'الاسم بالعربية',
+        'name.en' => 'الاسم بالإنجليزية',
+    ],
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',

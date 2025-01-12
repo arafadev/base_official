@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCountryRequest extends FormRequest
 {
-    
+
     public function authorize(): bool
     {
         return true;
@@ -15,11 +15,19 @@ class StoreCountryRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name.ar' => 'required|string',
+            'name.en' => 'required|string',
             'image'        => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'name'         => 'required|string|max:255|unique:countries,name',
             'country_code' => 'required|string|max:3|unique:countries,country_code',
             'iso2'         => 'required|string|max:2|unique:countries,iso2',
             'iso3'         => 'required|string|max:3|unique:countries,iso3',
+        ];
+    }
+    public function attributes(): array
+    {
+        return [
+            'name.ar' => __('admin.name'),
+            'name.en' => __('admin.name'),
         ];
     }
 }
