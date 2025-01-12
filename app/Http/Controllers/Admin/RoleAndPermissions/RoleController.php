@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 use App\Http\Requests\Admin\Role\StoreRoleRequest;
 use App\Http\Requests\Admin\Role\UpdateRoleRequest;
 use App\Http\Requests\Admin\Role\StoreRoleHasPermissionRequest;
@@ -77,6 +78,9 @@ class RoleController extends Controller
       // تخزين البيانات في model_has_permissions
       DB::table('model_has_permissions')->insertOrIgnore($modelData);
 
+           // مسح الكاش بعد التحديث
+           app(PermissionRegistrar::class)->forgetCachedPermissions();
+
       return redirect()->back()->with('success', __('admin.progress_success'));
   }
 
@@ -100,6 +104,9 @@ public function updateRoleHasPermission(Request $request, $role_id)
 
   $role = Role::findOrFail($role_id);
   $role->permissions()->sync($request->permissions);
+  app(PermissionRegistrar::class)->forgetCachedPermissions();
+
+
     return to_route('admin.role.show_roles_has_permission.show')->with('success', __('admin.progress_success'));
 }
 

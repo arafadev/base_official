@@ -12,7 +12,14 @@ use App\Http\Requests\Admin\Region\UpdateRegionRequest;
 
 class RegionController extends Controller
 
-{   public function index()
+{   public function __construct()
+    {
+        $this->middleware('permission:regions.index')->only('index');
+        $this->middleware('permission:regions.create')->only(['create', 'store']);
+        $this->middleware('permission:regions.edit')->only(['edit', 'update']);
+        $this->middleware('permission:regions.delete')->only('destroy, deleteSelected');
+    }
+  public function index()
     {
         return view('admin.regions.index' , ['regions' => Region::with('country')->get()]);
     }
