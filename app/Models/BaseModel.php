@@ -15,4 +15,4 @@ class BaseModel extends Model
         parent::boot();
         static::bootImageHandlingTrait();
     }
-}
+} 

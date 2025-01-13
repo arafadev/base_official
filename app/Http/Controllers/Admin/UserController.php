@@ -52,7 +52,7 @@ class UserController extends Controller
     public function deleteSelected(Request $request)
     {
         $ids = $request->input('ids', []);
-        User::whereIn('id', $ids)->get();
+        User::whereIn('id', $ids)->delete();
         return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
     }
 }

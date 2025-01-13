@@ -50,10 +50,15 @@ class CountryController extends Controller
         return redirect()->route('admin.countries.index')->with('success', __('admin.progress_success'));
     }
     
+    public function delete($id)
+    {
+        Country::findOrFail($id)->delete();
+        return redirect()->route('admin.countries.index')->with('success', __('admin.progress_success'));
+    }
     public function deleteSelected(Request $request)
     {
         $ids = $request->input('ids', []);
-        Country::whereIn('id', $ids)->get();
+        Country::whereIn('id', $ids)->delete();
         return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
     }
 }

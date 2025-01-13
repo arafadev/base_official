@@ -52,7 +52,7 @@ class ProviderController extends Controller
     public function deleteSelected(Request $request)
     {
         $ids = $request->input('ids', []);
-        Provider::whereIn('id', $ids)->get();
+        Provider::whereIn('id', $ids)->delete();
         return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
     }
 }
