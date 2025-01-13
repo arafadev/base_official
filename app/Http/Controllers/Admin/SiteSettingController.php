@@ -65,7 +65,7 @@ class SiteSettingController extends Controller
     public function deleteSelected(Request $request)
     {
         $ids = $request->input('ids', []);
-        Region::whereIn('id', $ids)->get();
+        SiteSetting::whereIn('id', $ids)->delete();
         return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
     }
 }

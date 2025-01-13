@@ -59,10 +59,15 @@ class RegionController extends Controller
         return redirect()->route('admin.regions.index')->with('success', __('admin.progress_success'));
     }
     
+    public function delete($id)
+    {
+        Region::findOrFail($id)->delete();
+        return redirect()->route('admin.regions.index')->with('success', __('admin.progress_success'));
+    }
     public function deleteSelected(Request $request)
     {
         $ids = $request->input('ids', []);
-        Region::whereIn('id', $ids)->get();
+        Region::whereIn('id', $ids)->delete();
         return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
     }
 }

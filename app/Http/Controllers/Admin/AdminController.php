@@ -63,7 +63,7 @@ class AdminController extends Controller
     public function deleteSelected(Request $request)
     {
         $ids = $request->input('ids', []);
-        Admin::whereIn('id', $ids)->get();
+        Admin::whereIn('id', $ids)->delete();
         return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
     }
 }
