@@ -3,13 +3,14 @@
 // crud_registry.php in config folder
 return [
     [
-        'name' => 'Dashboard',
+        'name' => 'Dashboard',  
         'route' => 'admin.dashboard',
         'icon' => 'fe fe-home',
         'base_permission' => 'dashboard',
         'is_dropdown' => false,
         'children' => [],
         'has_permission' => false,
+        'translation_key' => 'dashboard',
         // 'group_name' => '',
     ],
     [
@@ -20,6 +21,7 @@ return [
         'is_dropdown' => false,
         'has_permission' => true,
         'group_name' => 'admins',
+        'translation_key' => 'admins',
         'children' => [],
     ],
     [
@@ -30,6 +32,7 @@ return [
         'is_dropdown' => false,
         'has_permission' => true,
         'group_name' => 'providers',
+        'translation_key' => 'providers',
         'children' => [],
     ],
     [
@@ -40,16 +43,18 @@ return [
         'is_dropdown' => false,
         'has_permission' => true,
         'group_name' => 'users',
+        'translation_key' => 'users',
         'children' => [],
     ],
     [
-        'name' => 'Countries',
+        'name' => 'Countries', 
         'route' => 'admin.countries.index',
         'icon' => 'fe fe-globe',
         'base_permission' => 'countries',
         'is_dropdown' => false,
         'has_permission' => true,
         'group_name' => 'countries',
+        'translation_key' => 'countries',
     ],
 
     [
@@ -60,6 +65,8 @@ return [
         'is_dropdown' => false,
         'has_permission' => true,
         'group_name' => 'regions',
+        'translation_key' => 'regions',
+        
     ],
     [
         'name' => 'Services',
@@ -69,6 +76,7 @@ return [
         'is_dropdown' => false,
         'has_permission' => true,
         'group_name' => 'services',
+        'translation_key' => 'services',
         'children' => [],
     ],
     [
@@ -78,6 +86,7 @@ return [
         'base_permission' => 'site_settings',
         'is_dropdown' => false,
         'has_permission' => true,
+        'translation_key' => 'site_settings',
         'children' => [],
     ],
     [
@@ -87,6 +96,7 @@ return [
         'base_permission' => 'reports',
         'is_dropdown' => false,
         'has_permission' => true,
+        'translation_key' => 'reports',
         'children' => [],
     ],
     [
@@ -96,18 +106,23 @@ return [
         'base_permission' => 'roles_permissions',
         'is_dropdown' => true,
         'has_permission' => true,
+        'translation_key' => 'roles_permissions',
         'children' => [
             [
                 'name' => 'All Roles',
                 'route' => 'admin.roles.index',
+                'translation_key' => 'roles',
             ],
             [
                 'name' => 'Roles Has Permission',
                 'route' => 'admin.role.roles_has_permission.create',
+                'translation_key' => 'roles_has_permission',
             ],
             [
                 'name' => 'Show Roles Has Permission',
                 'route' => 'admin.role.show_roles_has_permission.show',
+                'translation_key' => 'show_roles_has_permission',
+
             ],
             [
                 'name' => 'All Permissions',
