@@ -110,5 +110,6 @@ return [
 'site_settings' => 'الاعدادات العامه',
 'reports'   => 'التقارير',
 'roles_permissions' => 'الادوار والصلاحيات',
+'role'   => 'الدور',
 
 ];
