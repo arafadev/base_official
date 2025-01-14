@@ -3,7 +3,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FinancialTransaction extends BaseModel
+class FinancialTransaction extends Model
 {
     use HasFactory;
 

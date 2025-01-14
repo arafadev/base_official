@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class Country extends BaseModel
+class Country extends Model
 {
     use HasFactory;
     
