@@ -105,5 +105,10 @@ return [
 'admin_percentage'  => 'نسبه الاداره ',
 'select_all' => 'اختر الكل',
 'show_site_settings' => 'عرض الاعدادات العامه',
+'role_and_permissions' => 'الادوار والصلاحيات',
+'regions' => 'المناطق',
+'site_settings' => 'الاعدادات العامه',
+'reports'   => 'التقارير',
+'roles_permissions' => 'الادوار والصلاحيات',
 
 ];
