@@ -42,19 +42,19 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <x-select id="role_id" label="{{ __('admin.role') }}" name="role_id" :options="$roles" :value="$admin->role_id"
-                                        valueKey="id" nameKey="name" :required="true" />
+                                    <x-select id="role_id" label="{{ __('admin.role') }}" name="role_id" :options="$roles"
+                                        :value="$admin->role_id" valueKey="id" nameKey="name" :required="true" />
                                 </div>
-                            </div>
+
 
                                 <div class="col-md-6">
                                     <x-input type="password" id="password" name="password"
                                         label="{{ __('admin.password') }}" placeholder="{{ __('admin.enter_password') }}"
                                         :required="false" />
                                 </div>
-                            <div class="row">
+                            </div>
 
-                            
+                            <div class="row">
                                 <div class="col-md-6">
                                     <x-file id="avatar" name="avatar" label="{{ __('admin.enter_image') }}"
                                         :required="false" :src="$admin->avatar" />
@@ -81,23 +81,4 @@
             </div> <!-- .col-12 -->
         </div> <!-- .row -->
     </div> <!-- .container-fluid -->
-@endsection
-@section('scripts')
-    <script>
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function() {
-                var output = document.getElementById('image-preview-img');
-                output.src = reader.result;
-                document.getElementById('image-preview').classList.remove('d-none');
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-
-        function removeImage() {
-            document.getElementById('image').value = "";
-            document.getElementById('image-preview-img').src = "#";
-            document.getElementById('image-preview').classList.add('d-none');
-        }
-    </script>
 @endsection
