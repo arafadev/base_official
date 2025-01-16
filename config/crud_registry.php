@@ -124,10 +124,11 @@ return [
                 'translation_key' => 'show_roles_has_permission',
 
             ],
-            [
-                'name' => 'All Permissions',
-                'route' => 'admin.permissions.index',
-            ],
+            // [
+            //     'name' => 'All Permissions',
+            //     'route' => 'admin.permissions.index',
+            //     'translation_key' => 'permissions',
+            // ],
         ],
     ],
 

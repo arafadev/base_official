@@ -111,5 +111,9 @@ return [
 'reports'   => 'التقارير',
 'roles_permissions' => 'الادوار والصلاحيات',
 'role'   => 'الدور',
+'roles' => 'الأدوار',
+'show_roles_has_permission' => 'عرض صلاحيات الأدوار',
+'roles_has_permission' => 'صلاحيات الأدوار',
+'permissions' => 'الصلاحيات',
 
 ];

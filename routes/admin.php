@@ -112,13 +112,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
         });
 
         Route::group(['prefix' => 'permissions'], function () {
-            Route::get('/', [PermissionController::class, 'index'])->name('permissions.index');
-            Route::get('create', [PermissionController::class, 'create'])->name('permissions.create');
+            // Route::get('/', [PermissionController::class, 'index'])->name('permissions.index');
+            // Route::get('create', [PermissionController::class, 'create'])->name('permissions.create');
             // Route::post('store', [PermissionController::class, 'store'])->name('permissions.store');
             // Route::get('edit/{id}', [PermissionController::class, 'edit'])->name('permissions.edit');
             // Route::post('update', [PermissionController::class, 'update'])->name('permissions.update');
             // Route::get('delete/{id}', [PermissionController::class, 'delete'])->name('permissions.delete');
-            Route::delete('deleteSelected', [PermissionController::class, 'deleteSelected'])->name('permissions.deleteSelected');
+            // Route::delete('deleteSelected', [PermissionController::class, 'deleteSelected'])->name('permissions.deleteSelected');
         });
         Route::group(['prefix' => 'roles'], function () {
             Route::get('/', [RoleController::class, 'index'])->name('roles.index');
