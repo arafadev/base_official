@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class Country extends Model
+class Country extends BaseModel
 {
-    use HasFactory;
-    
+    use HasFactory, UploadTrait;
+
     const IMAGEPATH = 'countries';
 
     protected $fillable = ['name', 'country_code', 'image', 'iso2', 'iso3'];
@@ -26,7 +26,6 @@ class Country extends Model
             throw new \InvalidArgumentException('The name attribute must be an array with keys for each language.');
         }
     }
-    
     public function getNameAttribute($value)
     {
         $names = json_decode($value, true);
