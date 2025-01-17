@@ -103,22 +103,22 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
         });
         Route::group(['prefix' => 'reports'], function () {
             Route::get('/', [ReportController::class, 'index'])->name('reports.index');
-            Route::get('create', [SiteSettingController::class, 'create'])->name('reports.create');
-            Route::post('store', [SiteSettingController::class, 'store'])->name('reports.store');
-            Route::get('edit/{id}', [SiteSettingController::class, 'edit'])->name('reports.edit');
-            Route::post('update', [SiteSettingController::class, 'update'])->name('reports.update');
-            Route::get('delete/{id}', [SiteSettingController::class, 'delete'])->name('reports.delete');
-            Route::delete('deleteSelected', [SiteSettingController::class, 'deleteSelected'])->name('reports.deleteSelected');
+            Route::get('create', [ReportController::class, 'create'])->name('reports.create');
+            Route::post('store', [ReportController::class, 'store'])->name('reports.store');
+            Route::get('edit/{id}', [ReportController::class, 'edit'])->name('reports.edit');
+            Route::post('update', [ReportController::class, 'update'])->name('reports.update');
+            Route::get('delete/{id}', [ReportController::class, 'delete'])->name('reports.delete');
+            Route::delete('deleteSelected', [ReportController::class, 'deleteSelected'])->name('reports.deleteSelected');
         });
 
         Route::group(['prefix' => 'permissions'], function () {
-            Route::get('/', [PermissionController::class, 'index'])->name('permissions.index');
-            Route::get('create', [PermissionController::class, 'create'])->name('permissions.create');
+            // Route::get('/', [PermissionController::class, 'index'])->name('permissions.index');
+            // Route::get('create', [PermissionController::class, 'create'])->name('permissions.create');
             // Route::post('store', [PermissionController::class, 'store'])->name('permissions.store');
             // Route::get('edit/{id}', [PermissionController::class, 'edit'])->name('permissions.edit');
             // Route::post('update', [PermissionController::class, 'update'])->name('permissions.update');
             // Route::get('delete/{id}', [PermissionController::class, 'delete'])->name('permissions.delete');
-            Route::delete('deleteSelected', [PermissionController::class, 'deleteSelected'])->name('permissions.deleteSelected');
+            // Route::delete('deleteSelected', [PermissionController::class, 'deleteSelected'])->name('permissions.deleteSelected');
         });
         Route::group(['prefix' => 'roles'], function () {
             Route::get('/', [RoleController::class, 'index'])->name('roles.index');

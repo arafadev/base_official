@@ -16,7 +16,7 @@ return new class extends Migration
           $table->string('country_code',5)->default('966');
           $table->string('phone',15);
           $table->string('email',50);
-          $table->string('password',100);
+          $table->string('password',100)->nullable();
           $table->string('avatar', 50)->nullable();
           $table->boolean('is_active')->default(false);
           $table->boolean('is_blocked')->default(false);

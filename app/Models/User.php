@@ -13,10 +13,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
-class User extends Authenticatable
+class User extends AuthBaseModel
 {
-    use Notifiable, UploadTrait ,  HasApiTokens, HasFactory, SoftDeletes;
-
     const IMAGEPATH = 'users';
 
     protected $fillable = [
@@ -33,41 +31,6 @@ class User extends Authenticatable
         'code',
         'code_expire',
     ];
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-        'is_notify'  => 'boolean',
-        'is_blocked' => 'boolean',
-    ];
-
-
-    public function getFullPhoneAttribute()
-    {
-        return $this->attributes['country_code'] . $this->attributes['phone'];
-    }
-
-    public function setAvatarAttribute($value)
-    {
-        if (!empty($value) && is_file($value)) {
-            if (isset($this->attributes['avatar'])) {
-                $this->deleteFile($this->attributes['avatar'], static::IMAGEPATH);
-            }
-            $this->attributes['avatar'] = $this->uploadAllTyps($value, static::IMAGEPATH);
-        }
-    }
-
-    public function getAvatarAttribute()
-    {
-        if (!empty($this->attributes['avatar'])) {
-            return $this->getImage($this->attributes['avatar'], static::IMAGEPATH);
-        }
-        return $this->defaultImage(static::IMAGEPATH);
-    }
-
 
     public function getActiveIconAttribute()
     {
@@ -90,7 +53,6 @@ class User extends Authenticatable
         }
     }
     
-    
       public function getBlockedIconAttribute()
       {
         if ($this->attributes['is_blocked']) {
@@ -107,13 +69,4 @@ class User extends Authenticatable
           return '<i class="fe fe-bell-off" style="color: #e74c3c; font-size: 18px;"></i>'; 
       }
     
-        protected static function boot()
-        {
-            parent::boot();
-            static::deleted(function ($model) {
-                if (isset($model->attributes['avatar'])) {
-                    $model->deleteFile($model->attributes['avatar'], static::IMAGEPATH);
-                }
-            });
-        }
 }
