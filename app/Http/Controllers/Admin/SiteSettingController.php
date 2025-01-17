@@ -32,4 +32,6 @@ class SiteSettingController extends Controller
         return redirect()->route('admin.site_settings.index')->with('success', __('admin.settings_updated_successfully'));
     }
 
+    
+
 }

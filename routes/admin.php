@@ -103,12 +103,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
         });
         Route::group(['prefix' => 'reports'], function () {
             Route::get('/', [ReportController::class, 'index'])->name('reports.index');
-            Route::get('create', [SiteSettingController::class, 'create'])->name('reports.create');
-            Route::post('store', [SiteSettingController::class, 'store'])->name('reports.store');
-            Route::get('edit/{id}', [SiteSettingController::class, 'edit'])->name('reports.edit');
-            Route::post('update', [SiteSettingController::class, 'update'])->name('reports.update');
-            Route::get('delete/{id}', [SiteSettingController::class, 'delete'])->name('reports.delete');
-            Route::delete('deleteSelected', [SiteSettingController::class, 'deleteSelected'])->name('reports.deleteSelected');
+            Route::get('create', [ReportController::class, 'create'])->name('reports.create');
+            Route::post('store', [ReportController::class, 'store'])->name('reports.store');
+            Route::get('edit/{id}', [ReportController::class, 'edit'])->name('reports.edit');
+            Route::post('update', [ReportController::class, 'update'])->name('reports.update');
+            Route::get('delete/{id}', [ReportController::class, 'delete'])->name('reports.delete');
+            Route::delete('deleteSelected', [ReportController::class, 'deleteSelected'])->name('reports.deleteSelected');
         });
 
         Route::group(['prefix' => 'permissions'], function () {

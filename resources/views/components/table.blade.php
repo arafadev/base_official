@@ -7,10 +7,13 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="mb-2 page-title">{{ $pageTitle }}</h2><hr>
+                <h2 class="mb-2 page-title">{{ $pageTitle }}</h2>
+                <hr>
 
                 <div class="page-title-right">
-                    <x-button-link :href="$createRoute" :text="$createText" class="btn-primary" />
+                    @if (isset($createRoute) && isset($createText))
+                        <x-button-link :href="$createRoute" :text="$createText" class="btn-primary" />
+                    @endif
                     @if ($showDeleteButton)
                         <x-button-link id="delete-selected" :text="$deleteText" class="btn-danger" style="display: none;"
                             :dataRoute="$dataRoute" />
@@ -20,7 +23,11 @@
                 <div class="row my-4">
                     <div class="col-md-12">
                         <x-card>
-                            <x-table-tag :headers="$headers" :items="$items" :actions="$actions" />
+                            @if (isset($actions))
+                                <x-table-tag :headers="$headers" :items="$items" :actions="$actions" />
+                            @else
+                                <x-table-tag :headers="$headers" :items="$items" />
+                            @endif
                         </x-card>
                     </div>
                 </div>

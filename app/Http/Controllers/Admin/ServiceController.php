@@ -59,7 +59,7 @@ class ServiceController extends Controller
     {
         $service = Service::findOrFail($id);
         $service->delete();
-		ReportTrait::addToLog('  حذف مدير');
+		ReportTrait::addToLog('  حذف خدمه');
         return to_route('admin.services.index')->with('success', __('admin.progress_success'));
     }
 
