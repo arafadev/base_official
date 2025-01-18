@@ -3,67 +3,67 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
-use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\Admin\AdminService;
 use App\Http\Requests\Admin\Admin\StoreAdminRequest;
 use App\Http\Requests\Admin\Admin\UpdateAdminRequest;
-use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
+{
 
-{   public function index()
+    public function __construct(protected AdminService $adminService) {  }
+
+    public function index()
     {
-        return view('admin.admins.index' , ['admins' => Admin::with('role')->get()]);
+        $admins = $this->adminService->getAllAdmins();
+        return view('admin.admins.index', compact('admins'));
     }
 
-    public function create(){
-        $roles = Role::get();
-        $countries = Country::get();
-        return view('admin.admins.create', get_defined_vars());
+    public function create()
+    {
+        $roles = $this->adminService->getRoles();
+        $countries = $this->adminService->getCountries();
+        return view('admin.admins.create', compact('roles', 'countries'));
     }
 
-    public function store(StoreAdminRequest  $request)
+    public function store(StoreAdminRequest $request)
     {
-        $data = $request->validated();
-        $role_name = Role::findOrFail($data['role_id'])->name;
-        $admin = Admin::create($data);
-        $admin->assignRole($role_name); 
+        $this->adminService->storeAdmin($request);
         return redirect()->route('admin.admins.index')->with('success', __('admin.progress_success'));
     }
 
     public function edit($id)
     {
-       $admin =  Admin::findOrFail($id);
-       $countries = Country::get();
-       $roles = Role::get();
-        return view('admin.admins.edit'  ,get_defined_vars());
+        $admin = Admin::findOrFail($id);
+        $countries = $this->adminService->getCountries();
+        $roles = $this->adminService->getRoles();
+        return view('admin.admins.edit', compact('admin', 'countries', 'roles'));
     }
 
-    public function show($id){
-       $countries = Country::get();
-       $admin = Admin::findOrFail($id);
-        return view('admin.admins.show', get_defined_vars());
+    public function show($id)
+    {
+        
+        $admin = Admin::findOrFail($id);
+        $countries = $this->adminService->getCountries();
+        return view('admin.admins.show', compact('admin', 'countries'));
     }
-
 
     public function update(UpdateAdminRequest $request, $id)
     {
-        $admin = Admin::findOrFail($id);
-        $data = $request->validated();
-    
-        $admin->update($data);
-    
-        $role_name = Role::findOrFail($data['role_id'])->name;
-        $admin->syncRoles([$role_name]); 
-    
+        $this->adminService->updateAdmin($request, $id);
         return redirect()->route('admin.admins.index')->with('success', __('admin.progress_success'));
     }
-    
+
+    public function toggle(Request $request)
+    {
+        $this->adminService->toggleAdminField($request->id, $request->field);
+        return redirect()->back()->with('success', __('admin.progress_success'));
+    }
+
     public function deleteSelected(Request $request)
     {
-        $ids = $request->input('ids', []);
-        Admin::whereIn('id', $ids)->delete();
+        $this->adminService->deleteAdmins($request->input('ids', []));
         return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
     }
 }

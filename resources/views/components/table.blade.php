@@ -14,7 +14,7 @@
                     @if (isset($createRoute) && isset($createText))
                         <x-button-link :href="$createRoute" :text="$createText" class="btn-primary" />
                     @endif
-                    @if ($showDeleteButton)
+                    @if (isset($showDeleteButton) && $showDeleteButton)
                         <x-button-link id="delete-selected" :text="$deleteText" class="btn-danger" style="display: none;"
                             :dataRoute="$dataRoute" />
                     @endif
