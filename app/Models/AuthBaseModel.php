@@ -25,12 +25,12 @@ class AuthBaseModel extends Authenticatable
         'is_blocked' => 'boolean',
     ];
 
-    // public function setPhoneAttribute($value)
-    // {
-    //     if (!empty($value)) {
-    //         $this->attributes['phone'] = fixPhone($value);
-    //     }
-    // }
+    public function setPhoneAttribute($value)
+    {
+        if (!empty($value)) {
+            $this->attributes['phone'] = fixPhone($value);
+        }
+    }
     // public function getGuardAttribute(): string
     // {
     //     $guard = lcfirst(class_basename($this));

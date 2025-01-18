@@ -69,6 +69,16 @@ class AdminService
 
     public function deleteAdmins($ids)
     {
+        $admins = Admin::whereIn('id', $ids)->get();
+
+        foreach ($admins as $admin) {
+            if ($admin->avatar) {
+                $filePath = storage_path('app/public/' . str_replace(url('/storage/'), '', $admin->avatar));
+                if (file_exists($filePath)) {
+                    unlink($filePath); 
+                }
+            }
+        }
         Admin::whereIn('id', $ids)->delete();
     }
 

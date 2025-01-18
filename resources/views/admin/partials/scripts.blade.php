@@ -17,12 +17,43 @@
 <script src='{{ asset('assets-admin') }}/js/jquery.dataTables.min.js'></script>
 <script src='{{ asset('assets-admin') }}/js/dataTables.bootstrap4.min.js'></script>
 <script>
-    $('#dataTable-1').DataTable({
-        autoWidth: true,
-        "lengthMenu": [
-            [16, 32, 64, -1],
-            [16, 32, 64, "All"]
-        ]
+    $(document).ready(function() {
+        const dataTable = $('#dataTable-1').DataTable({
+            autoWidth: true,
+            "lengthMenu": [
+                [16, 32, 64, -1],
+                [16, 32, 64, "All"]
+            ]
+        });
+
+        function toggleDeleteButton() {
+            const selected = $('.select-row:checked').length > 0;
+            $('#delete-selected').css('display', selected ? 'inline-block' : 'none');
+        }
+
+        dataTable.on('draw', function() {
+            $('.select-row').off('change').on('change', toggleDeleteButton);
+
+            $('#select-all').off('change').on('change', function() {
+                const checked = this.checked;
+                $('.select-row').prop('checked', checked);
+                toggleDeleteButton();
+            });
+        });
+
+        $('#delete-selected').on('click', function() {
+            const selectedIds = $('.select-row:checked').map(function() {
+                return this.value;
+            }).get();
+
+            if (selectedIds.length > 0) {
+                const route = @json($dataRoute);
+
+                showConfirmationModal(() => {
+                    deleteItems(selectedIds, route);
+                });
+            }
+        });
     });
 </script>
 

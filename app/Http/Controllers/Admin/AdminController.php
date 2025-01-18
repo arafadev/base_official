@@ -43,6 +43,7 @@ class AdminController extends Controller
 
     public function show($id)
     {
+        
         $admin = Admin::findOrFail($id);
         $countries = $this->adminService->getCountries();
         return view('admin.admins.show', compact('admin', 'countries'));
