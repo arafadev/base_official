@@ -2,7 +2,7 @@
 namespace App\Models;
 use App\Traits\UploadTrait;
 
-class Settlement extends BaseModel
+class Settlement extends Model
 {
     const IMAGEPATH = 'settlements';
     

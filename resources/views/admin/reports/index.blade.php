@@ -1,8 +1,8 @@
 @extends('components.table', [
     'pageTitle' => __('admin.reports'),
     'title' => __('admin.reports_page'),
-    'createRoute' => route('admin.reports.create'),
-    'createText' => __('admin.create_report'),
+    // 'createRoute' => route('admin.reports.create'),
+    // 'createText' => __('admin.create_report'),
     'deleteText' => __('admin.delete_selected'),
     'showDeleteButton' => true,
     'dataRoute' => route('admin.reports.deleteSelected'),

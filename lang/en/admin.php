@@ -152,6 +152,12 @@ return [
 'select_country_id'=> 'Select Country',
 'region_name'   => 'Region Name',
 'select_all' => 'Select All',
+'regions'   => 'Regions',
+'reports'   => 'Reports',
+'roles'=> 'Roles',
+'roles_permissions'=> 'Roles & Permissions',
+'site_settings' => 'Site Settings',
+'role'  => 'Role',
 
 
 ];

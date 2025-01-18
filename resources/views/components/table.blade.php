@@ -7,11 +7,14 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="mb-2 page-title">{{ $pageTitle }}</h2><hr>
+                <h2 class="mb-2 page-title">{{ $pageTitle }}</h2>
+                <hr>
 
                 <div class="page-title-right">
-                    <x-button-link :href="$createRoute" :text="$createText" class="btn-primary" />
-                    @if ($showDeleteButton)
+                    @if (isset($createRoute) && isset($createText))
+                        <x-button-link :href="$createRoute" :text="$createText" class="btn-primary" />
+                    @endif
+                    @if (isset($showDeleteButton) && $showDeleteButton)
                         <x-button-link id="delete-selected" :text="$deleteText" class="btn-danger" style="display: none;"
                             :dataRoute="$dataRoute" />
                     @endif
@@ -20,7 +23,11 @@
                 <div class="row my-4">
                     <div class="col-md-12">
                         <x-card>
-                            <x-table-tag :headers="$headers" :items="$items" :actions="$actions" />
+                            @if (isset($actions))
+                                <x-table-tag :headers="$headers" :items="$items" :actions="$actions" />
+                            @else
+                                <x-table-tag :headers="$headers" :items="$items" />
+                            @endif
                         </x-card>
                     </div>
                 </div>
@@ -28,27 +35,7 @@
         </div>
     </div>
 
-    <!-- Confirmation Modal -->
-    <div class="modal" id="confirmation-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{ __('admin.confirmation') }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="confirmation-message">{{ __('admin.are_you_sure_deleteing_selected_elements') }}</p>
-                </div>
-                <div class="modal-footer">
-                    <button id="confirm-delete" class="btn btn-danger">{{ __('admin.delete') }}</button>
-                    <button id="cancel-delete" class="btn btn-secondary"
-                        data-dismiss="modal">{{ __('admin.cancel') }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('admin.partials.confirmation-modal')
 @endsection
 
 @section('scripts')

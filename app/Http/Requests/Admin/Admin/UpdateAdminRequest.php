@@ -22,7 +22,7 @@ class UpdateAdminRequest extends FormRequest
             'password' => 'nullable|string',
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', 
             'is_notify' => 'nullable|boolean',
-            'is_blocked' => 'nullable|boolean',
+            'is_blocked' => 'sometimes|boolean',
         ];
     }
 

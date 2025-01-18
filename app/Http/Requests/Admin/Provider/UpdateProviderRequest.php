@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\Provider;
 
+use App\Enums\ProviderApproved;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProviderRequest extends FormRequest
@@ -23,6 +24,7 @@ class UpdateProviderRequest extends FormRequest
             'is_active' => 'nullable|boolean',
             'is_notify' => 'nullable|boolean',
             'is_blocked' => 'nullable|boolean',
+            'is_approved' => 'nullable|in:'.implode(',', ProviderApproved::toArray()),
         ];
     }
 
@@ -38,6 +40,7 @@ class UpdateProviderRequest extends FormRequest
             'is_active'    => __('admin.is_active'),
             'is_blocked'   => __('admin.image'),
             'is_notify'   => __('admin.is_notify'),
+            'is_approved'   => __('admin.is_approved'),
         ];
     }
 }

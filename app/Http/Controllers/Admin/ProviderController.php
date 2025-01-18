@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin;
 use App\Models\Country;
 use App\Models\Provider;
 use Illuminate\Http\Request;
@@ -49,6 +50,28 @@ class ProviderController extends Controller
         return redirect()->route('admin.providers.index')->with('success', __('admin.progress_success'));
     }
     
+    public function toggle(Request $request)
+    {
+        $provider = Provider::findOrFail($request->id);
+        $field = $request->field;
+
+        switch ($field) {
+            case 'is_blocked':
+                $provider->is_blocked = !$provider->is_blocked;
+                $provider->is_approved = !$provider->is_approved;
+                break;
+            case 'is_approved':
+                $provider->is_approved = !$provider->is_approved;
+                break;
+            case 'is_active':
+                $provider->is_active = !$provider->is_active;
+                break;
+        }
+
+        $provider->save();
+
+        return redirect()->back()->with('success', __('admin.progress_success'));
+    }
     public function deleteSelected(Request $request)
     {
         $ids = $request->input('ids', []);
