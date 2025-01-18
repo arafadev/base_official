@@ -79,8 +79,8 @@ class AuthBaseModel extends Authenticatable
 
     public function markAsActive()
     {
-        $this->update(['code' => null, 'code_expire' => null, 'active' => true]);
-        // $this->update(['code' => null, 'code_expire' => null, 'is_active' => true]);
+        // $this->update(['code' => null, 'code_expire' => null, 'active' => true]);
+        $this->update(['code' => null, 'code_expire' => null, 'is_active' => true]);
         return $this;
     }
 

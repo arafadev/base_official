@@ -1,5 +1,6 @@
 <?php
 namespace App\Services\Auth;
+use App\Models\User;
 use App\Traits\ResponseTrait;
 use App\Models\VerificationCode;
 
@@ -9,11 +10,20 @@ class OtpService
 
     public function sendOtpCode($request)
     {
-        $type = $request->is('*/user/*') ? 'user' : 'provider';
+
+        $user = User::where('phone', $request->phone)
+        ->where('country_code', $request->country_code)
+        ->first();
+
+
+        if ($user && $user->is_blocked) {
+            return $this->response('error', __('auth.blocked'));
+        }
+
         $data = [
             'phone'        => $request['phone'],
             'country_code' => $request['country_code'],
-            'type'         => $type,
+            'type'         => 'user',
         ];
         $verificationCode = VerificationCode::updateOrCreate($data, $data);
         $verificationCode->sendVerificationCode();
