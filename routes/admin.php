@@ -57,6 +57,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::get('{id}', [AdminController::class, 'show'])->name('admins.show');
             Route::get('edit/{id}', [AdminController::class, 'edit'])->name('admins.edit');
             Route::post('update/{id}', [AdminController::class, 'update'])->name('admins.update');
+            Route::get('toggle/{id}/{field}', [AdminController::class, 'toggle'])->name('admins.toggle');
             Route::get('delete/{id}', [AdminController::class, 'delete'])->name('admins.delete');
             Route::delete('deleteSelected', [AdminController::class, 'deleteSelected'])->name('admins.deleteSelected');
         });
@@ -68,6 +69,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::get('{id}', [UserController::class, 'show'])->name('users.show');
             Route::get('edit/{id}', [UserController::class, 'edit'])->name('users.edit');
             Route::post('update/{id}', [UserController::class, 'update'])->name('users.update');
+            Route::get('toggle/{id}/{field}', [UserController::class, 'toggle'])->name('users.toggle');
             Route::get('delete/{id}', [UserController::class, 'delete'])->name('users.delete');
             Route::delete('deleteSelected', [UserController::class, 'deleteSelected'])->name('users.deleteSelected');
         });
@@ -79,6 +81,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::get('{id}', [ProviderController::class, 'show'])->name('providers.show');
             Route::get('edit/{id}', [ProviderController::class, 'edit'])->name('providers.edit');
             Route::post('update/{id}', [ProviderController::class, 'update'])->name('providers.update');
+            Route::get('toggle/{id}/{field}', [ProviderController::class, 'toggle'])->name('providers.toggle');
             Route::get('delete/{id}', [ProviderController::class, 'delete'])->name('providers.delete');
             Route::delete('deleteSelected', [ProviderController::class, 'deleteSelected'])->name('providers.deleteSelected');
         });

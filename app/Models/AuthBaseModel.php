@@ -57,7 +57,6 @@ class AuthBaseModel extends Authenticatable
         }
     }
 
-    
     public function setAvatarAttribute($value)
     {
         if (!empty($value) && is_file($value)) {
@@ -75,6 +74,7 @@ class AuthBaseModel extends Authenticatable
         }
         return $this->defaultImage(static::IMAGEPATH);
     }
+
 
 
     public function markAsActive()

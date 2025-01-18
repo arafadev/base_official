@@ -13,7 +13,7 @@ class UserController extends Controller
 
 {   public function index()
     {
-        return view('admin.users.index' , ['users' => User::get()]);
+        return view('admin.users.index' , ['users' => User::latest()->get()]);
     }
 
     public function create(){
@@ -49,7 +49,31 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('success', __('admin.progress_success'));
     }
     
-    public function deleteSelected(Request $request)
+    public function toggle(Request $request)
+    {
+        $user = User::findOrFail($request->id);
+        $field = $request->field;
+
+        switch ($field) {
+            case 'is_blocked':
+                $user->is_blocked = !$user->is_blocked;
+                $user->is_notify = !$user->is_notify;
+                break;
+            case 'is_approved':
+                $user->is_approved = !$user->is_approved;
+                break;
+            case 'is_active':
+                $user->is_active = !$user->is_active;
+                break;
+            case 'is_notify':
+                $user->is_notify = !$user->is_notify;
+                break;
+        }
+
+        $user->save();
+
+        return redirect()->back()->with('success', __('admin.progress_success'));
+    }    public function deleteSelected(Request $request)
     {
         $ids = $request->input('ids', []);
         User::whereIn('id', $ids)->delete();
