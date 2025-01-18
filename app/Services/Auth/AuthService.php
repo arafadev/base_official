@@ -27,16 +27,17 @@ class AuthService
             'user' => []
         ];
 
-        // If user is blocked, return blocked
         if ($user->is_blocked) {
             $dataResource['key'] = 'blocked';
             $dataResource['msg'] = __('auth.blocked');
             return $dataResource;
         }
+        
         if ($verificationCode) {
             $verificationCode->delete();
         }
-        $user->update(['is_active' => true]);
+        
+        $user->markAsActive();
 
         $dataResource['user'] = UserResource::make($user->refresh())->setToken($user->login());
 

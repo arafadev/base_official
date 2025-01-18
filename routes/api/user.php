@@ -29,7 +29,4 @@ Route::group(['middleware' => ['OptionalSanctumMiddleware']], function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'is-active']], function () {
  
-    Route::get('test', function () {
-        return 'active test !';
-    });
 });
