@@ -115,5 +115,6 @@ return [
 'show_roles_has_permission' => 'عرض صلاحيات الأدوار',
 'roles_has_permission' => 'صلاحيات الأدوار',
 'permissions' => 'الصلاحيات',
+'enter_country_code'    => 'أدخل كود الدوله '
 
 ];

@@ -158,6 +158,7 @@ return [
 'roles_permissions'=> 'Roles & Permissions',
 'site_settings' => 'Site Settings',
 'role'  => 'Role',
+'create_provider' => 'Add Provider',
 
 
 ];
