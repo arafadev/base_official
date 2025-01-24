@@ -16,21 +16,21 @@ class AuthBaseModel extends Authenticatable
 
     const IMAGEPATH = 'users';
 
-    protected $hidden = ['password'];
+    // protected $hidden = ['password'];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-        'is_notify'  => 'boolean',
-        'is_blocked' => 'boolean',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    //     // 'password' => 'hashed',
+    //     'is_notify'  => 'boolean',
+    //     'is_blocked' => 'boolean',
+    // ];
 
-    public function setPhoneAttribute($value)
-    {
-        if (!empty($value)) {
-            $this->attributes['phone'] = fixPhone($value);
-        }
-    }
+    // public function setPhoneAttribute($value)
+    // {
+    //     if (!empty($value)) {
+    //         $this->attributes['phone'] = fixPhone($value);
+    //     }
+    // }
     // public function getGuardAttribute(): string
     // {
     //     $guard = lcfirst(class_basename($this));
@@ -41,7 +41,7 @@ class AuthBaseModel extends Authenticatable
     // public function setCountryCodeAttribute($value)
     // {
     //     if (!empty($value)) {
-    //         $this->attributes['country_code'] = fixPhone($value);
+            // $this->attributes['country_code'] = fixPhone($value);
     //     }
     // }
 
@@ -50,12 +50,12 @@ class AuthBaseModel extends Authenticatable
         return $this->attributes['country_code'] . $this->attributes['phone'];
     }
 
-    public function setPasswordAttribute($value)
-    {
-        if ($value) {
-            $this->attributes['password'] = bcrypt($value);
-        }
-    }
+    // public function setPasswordAttribute($value) 
+    // {
+    //     if ($value) {
+    //         $this->attributes['password'] = bcrypt($value);
+    //     }
+    // }
 
     public function setAvatarAttribute($value)
     {

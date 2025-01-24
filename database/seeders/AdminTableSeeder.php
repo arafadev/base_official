@@ -2,7 +2,6 @@
 namespace Database\Seeders;
 use App\Models\Admin;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminTableSeeder extends Seeder
@@ -19,6 +18,6 @@ class AdminTableSeeder extends Seeder
             'role_id'      => 1,
         ]);
 
-        Admin::factory()->count(9)->create();
+        Admin::factory()->count(30)->create();
     }
 }

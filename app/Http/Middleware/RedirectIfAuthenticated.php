@@ -24,7 +24,9 @@ class RedirectIfAuthenticated
                 return redirect(RouteServiceProvider::ADMIN);
             } elseif ($guard == 'provider') {
                 return redirect(RouteServiceProvider::PROVIDER);
-            } 
+            } else {
+                return redirect(RouteServiceProvider::HOME);
+            }
         }
         return $next($request);
     }

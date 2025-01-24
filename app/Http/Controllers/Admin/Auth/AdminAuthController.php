@@ -15,6 +15,7 @@ class AdminAuthController extends Controller
 
     public function login(Request $request)
     {
+
         if (auth()->guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
 
             if (auth('admin')->user()->is_blocked) {

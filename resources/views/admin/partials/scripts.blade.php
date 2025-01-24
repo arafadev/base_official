@@ -18,12 +18,47 @@
 <script src='{{ asset('assets-admin') }}/js/dataTables.bootstrap4.min.js'></script>
 <script>
     $(document).ready(function() {
+        const isRTL = $('html').attr('dir') === 'rtl'; // تحديد الاتجاه بناءً على HTML dir
+
         const dataTable = $('#dataTable-1').DataTable({
-            autoWidth: true,
-            "lengthMenu": [
+            autoWidth: false,
+            scrollX: true,
+            responsive: false,
+            columnDefs: [{
+                    targets: 0,
+                    width: '50px'
+                },
+                {
+                    targets: 1,
+                    width: '50px'
+                },
+                {
+                    targets: '_all',
+                    width: 'auto'
+                }
+            ],
+            lengthMenu: [
                 [16, 32, 64, -1],
                 [16, 32, 64, "All"]
-            ]
+            ],
+            language: {
+                url: isRTL ?
+                    "//cdn.datatables.net/plug-ins/1.11.6/i18n/ar.json" 
+                    :
+                    "//cdn.datatables.net/plug-ins/1.11.6/i18n/en.json" 
+            },
+            dom: '<"d-flex justify-content-between align-items-center"lf>rtip', 
+            initComplete: function() {
+                if (isRTL) {
+                    $('.dataTables_filter').css({
+                        'text-align': 'left',
+                        'float': 'left' 
+                    });
+                    $('.dataTables_length').css({
+                        'float': 'right' 
+                    });
+                }
+            }
         });
 
         function toggleDeleteButton() {
@@ -46,16 +81,10 @@
                 return this.value;
             }).get();
 
-            if (selectedIds.length > 0) {
-                const route = @json($dataRoute);
-
-                showConfirmationModal(() => {
-                    deleteItems(selectedIds, route);
-                });
-            }
         });
     });
 </script>
+
 
 <script>
     /* defind global options */

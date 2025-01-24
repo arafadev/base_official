@@ -15,7 +15,7 @@ class AdminService
 
     public function getAllAdmins()
     {
-        return Admin::with('role')->get();
+        return Admin::with('role')->where('id', '!=', 1)->orderBy('created_at', 'desc')->get();
     }
 
     public function getRoles()

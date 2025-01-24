@@ -32,12 +32,32 @@
     <link rel="stylesheet" href="{{ asset($dir) }}/css/app-dark.css" id="darkTheme" disabled>
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-    
+
     <!-- Toastr CSS and JS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    
+
     <link rel="stylesheet" href="{{ asset('custom/css/table.css') }}">
 
     @yield('css')
 
+    <style>
+        /* تنسيق مربع البحث في RTL */
+        html[dir="rtl"] .dataTables_filter {
+            float: left !important;
+            /* اجعل مربع البحث أقصى اليسار */
+            text-align: left !important;
+        }
+
+        /* تنسيق طول الجدول في RTL */
+        html[dir="rtl"] .dataTables_length {
+            float: right !important;
+            /* اجعل مربع تحديد الطول أقصى اليمين */
+        }
+
+        /* تنسيق LTR (اختياري إذا كان يعمل بشكل طبيعي) */
+        html[dir="ltr"] .dataTables_filter {
+            float: right !important;
+            text-align: right !important;
+        }
+    </style>
 </head>
