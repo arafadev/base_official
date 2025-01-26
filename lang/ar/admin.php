@@ -96,6 +96,7 @@ return [
 'country_id'   => 'الدوله',
 'arabic' => 'العربية',
 'english' => 'الانجليزية',
+
 'public_settings'   => 'الاعدادات العامه',
 'name_ar'   => 'الاسم بالعربيه',
 'name_en'   => 'الاسم بالانجليزيه',
@@ -115,6 +116,16 @@ return [
 'show_roles_has_permission' => 'عرض صلاحيات الأدوار',
 'roles_has_permission' => 'صلاحيات الأدوار',
 'permissions' => 'الصلاحيات',
-'enter_country_code'    => 'أدخل كود الدوله '
+'enter_country_code'    => 'أدخل كود الدوله ',
+'all_roles_with_permission' => 'جميع الأدوار بالصلاحيات',
+'roles_page' => 'صفحه الأدوار',
+'create_role' => 'اضافه دور',
+
+'admin_name' => 'اسم المشرف',
+'url' => 'رابط المشرف',
+'select_role_id' => 'اختر الدور',
+'ip'    => 'عنوان IP',
+'agent' => 'العميل',
+'method' => 'الطريقه',
 
 ];

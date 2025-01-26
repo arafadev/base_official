@@ -16,8 +16,8 @@ class AdminProfileController extends Controller
     
     public function index()
     {
-        $roles = Role::get();
-        $countries = Country::get();
+        $roles = Role::latest()->get();
+        $countries = Country::latest()->get();
         return view('admin.admins.profile',get_defined_vars());
     }
 

@@ -50,7 +50,7 @@
                                 <div class="col-md-6">
                                     <x-input type="password" id="password" name="password"
                                         label="{{ __('admin.password') }}" placeholder="{{ __('admin.enter_password') }}"
-                                        :required="false" />
+                                        :required="true" />
                                 </div>
                             </div>
 

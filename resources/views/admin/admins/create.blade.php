@@ -48,7 +48,7 @@
                                         :options="$roles" valueKey="id" nameKey="name" :required="true"  />
                                 </div>
                                 <div class="col-md-6">
-                                    <x-file id="avatar" name="avatar" label="{{ __('admin.enter_image') }}" :required="true" />
+                                    <x-file id="avatar" name="avatar" label="{{ __('admin.enter_image') }}" :required="false" />
                                 </div>
                                 
                             </div>

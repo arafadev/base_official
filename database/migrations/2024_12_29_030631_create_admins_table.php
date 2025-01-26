@@ -17,7 +17,7 @@ return new class extends Migration
 			$table->string('country_code', 5)->default('966');
 			$table->string('name');
 			$table->string('email');
-			$table->string('phone');
+			$table->string('phone',15);
 			$table->string('password');
 			$table->string('avatar')->nullable();
             $table->foreignId('role_id')->nullable()->constrained('roles'); 

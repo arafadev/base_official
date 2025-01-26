@@ -20,12 +20,12 @@ class AdminService
 
     public function getRoles()
     {
-        return Role::get();
+        return Role::latest()->get();
     }
 
     public function getCountries()
     {
-        return Country::get();
+        return Country::latest()->get();
     }
 
     public function storeAdmin(StoreAdminRequest $request)

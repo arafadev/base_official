@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
@@ -19,7 +20,8 @@ use App\Http\Controllers\Admin\RoleAndPermissions\PermissionController;
 Route::redirect('/admin', '/admin/login');
 
 Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'], 'as' => 'admin.'], function () {
-    
+
+
     Route::get('login', [AdminAuthController::class, 'getLogin'])->name('login.form')->middleware('guest:admin');
     Route::post('login', [AdminAuthController::class, 'login'])->name('login')->middleware('guest:admin');
 

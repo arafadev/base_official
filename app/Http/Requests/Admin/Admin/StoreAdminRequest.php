@@ -16,7 +16,7 @@ class StoreAdminRequest extends FormRequest
         return [
             'name'    => 'required|string',
             'country_code'  => 'required|exists:countries,country_code',
-            'phone'     => 'required|unique:admins,phone',
+            'phone'     => 'required|unique:admins,phone|digits_between:7,13',
             'role_id'     => 'required|exists:roles,id',
             'email'     => 'required|unique:admins,email',
             'password'  => 'required',

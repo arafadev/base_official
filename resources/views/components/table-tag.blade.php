@@ -38,7 +38,9 @@
                             <td class="text-center">
                                 @if (Str::contains($key, 'image'))
                                     <img src="{{ $value }}" alt="Image"
-                                        style="max-width: 50px; height: auto;">
+                                        style="width: 50px; height: 50px; object-fit: cover;">
+                                @elseif ($key === 'phone')
+                                    <a href="tel:{{ $value }}">{{ $value }}</a>
                                 @else
                                     {!! $value !!}
                                 @endif
