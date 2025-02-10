@@ -132,17 +132,11 @@ class AuthBaseModel extends Authenticatable
     public function updateDevice()
     {
         if (request()->device_id) {
-            $this->devices()->updateOrCreate(
-                [
-                    'device_id' => request()->device_id,
-                    'device_type' => request()->device_type,
-                ],
-                [
-                    'device_id' => request()->device_id,
-                    'device_type' => request()->device_type,
-                    'lang' => request()->lang ?? lang(),
-                ],
-            );
+            $this->devices()->updateOrCreate([
+				'device_id'   => request()->device_id,
+				'device_type' => request()->device_type,
+				'lang'        => request()->header('Lang') ?? defaultLang(),
+			]);
         }
     }
 
@@ -173,10 +167,10 @@ class AuthBaseModel extends Authenticatable
     // }
 
 
-    // public function notifications()
-    // {
-    //     return $this->morphMany(Notification::class, 'notifiable')->orderBy('created_at', 'desc');
-    // }
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable')->orderBy('created_at', 'desc');
+    }
 
 
 

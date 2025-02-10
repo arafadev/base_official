@@ -6,11 +6,7 @@ namespace App\Models;
 use App\Traits\UploadTrait;
 use App\Models\AuthBaseModel;
 use App\Enums\ProviderApproved;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 
 class User extends AuthBaseModel

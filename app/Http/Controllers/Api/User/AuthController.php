@@ -8,7 +8,7 @@ use App\Services\Auth\AuthService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\UserResource;
-use App\Http\Requests\Api\User\Auth\CodeRequest;
+use App\Http\Requests\Api\User\Auth\ActiveCodeRequest;
 use App\Http\Requests\Api\User\Auth\PreSendCode;
 use App\Http\Requests\Api\User\Auth\LoginRequest;
 use App\Http\Requests\Api\User\Auth\ActivateRequest;
@@ -23,7 +23,7 @@ class AuthController extends Controller {
     {
         DB::beginTransaction();
         try {
-            (new OtpService())->sendOtpCode($request);
+            (new OtpService())->sendOtpCode($request->validated());
             DB::commit();
             return $this->response(
                 'success',  __('auth.code_send'));
@@ -33,7 +33,7 @@ class AuthController extends Controller {
         }
     }
 
-    public function checkCode(CodeRequest $request) 
+    public function active(ActiveCodeRequest $request) 
     {
         $data = (new AuthService())->checkCode($request);
         return $this->response($data['key'], $data['msg'], $data['user'] == [] ? [] : $data['user']);

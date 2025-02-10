@@ -27,6 +27,8 @@ class PreSendCode extends BaseApiRequest
             'phone'        => 'required|numeric',
             'country_code' => 'required|numeric|digits_between:1,5',
             'iso'          => 'required|exists:countries,iso2',
+            'device_id'   => 'required|string',
+			'device_type' => 'required|string',
         ];
     }
 

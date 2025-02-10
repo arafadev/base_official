@@ -2,22 +2,14 @@
 
 namespace App\Models;
 
-use App\Traits\UploadTrait;
 use App\Models\AuthBaseModel;
-use App\Enums\ProviderApproved;
-use Laravel\Sanctum\HasApiTokens;
-use App\Traits\ImageHandlingTrait;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 class Admin extends AuthBaseModel
 {
-    use Notifiable, UploadTrait, HasRoles,  HasApiTokens, HasFactory, SoftDeletes;
+    use  HasRoles;
 
     const IMAGEPATH = 'admins';
 

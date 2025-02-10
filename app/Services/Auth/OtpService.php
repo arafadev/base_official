@@ -11,8 +11,8 @@ class OtpService
     public function sendOtpCode($request)
     {
 
-        $user = User::where('phone', $request->phone)
-        ->where('country_code', $request->country_code)
+        $user = User::where('phone', $request['phone'])
+        ->where('country_code', $request['country_code'])
         ->first();
 
 
@@ -25,6 +25,7 @@ class OtpService
             'country_code' => $request['country_code'],
             'type'         => 'user',
         ];
+        
         $verificationCode = VerificationCode::updateOrCreate($data, $data);
         $verificationCode->sendVerificationCode();
         return $verificationCode->refresh();

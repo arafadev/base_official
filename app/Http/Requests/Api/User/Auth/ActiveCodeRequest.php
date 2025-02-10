@@ -11,7 +11,7 @@ use App\Http\Requests\Api\BaseApiRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class CodeRequest extends BaseApiRequest
+class ActiveCodeRequest extends BaseApiRequest
 {
     use ResponseTrait, GeneralTrait;
 
