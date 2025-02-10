@@ -22,4 +22,3 @@ Route::name('site.')->controller(SiteController::class)->group(function () {
 });
 
 
-

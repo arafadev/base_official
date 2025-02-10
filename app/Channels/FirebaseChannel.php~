@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Channels;
+
+use App\Jobs\FireBase\SendFirebaseNotificationToMultipleJob;
+use Illuminate\Notifications\Notification;
+
+class FirebaseChannel
+{
+	public function send($notifiable, Notification $notification) : void
+	{
+		// هنا يمكنك استدعاء البيانات من الإشعار
+//		$data = $notification->data;
+
+		// تنفيذ Job لإرسال الإشعار إلى Firebase
+		SendFirebaseNotificationToMultipleJob::dispatch($notifiable, $notification->data);
+	}
+}

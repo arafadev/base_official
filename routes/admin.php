@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
@@ -19,7 +20,8 @@ use App\Http\Controllers\Admin\RoleAndPermissions\PermissionController;
 Route::redirect('/admin', '/admin/login');
 
 Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'], 'as' => 'admin.'], function () {
-    
+
+
     Route::get('login', [AdminAuthController::class, 'getLogin'])->name('login.form')->middleware('guest:admin');
     Route::post('login', [AdminAuthController::class, 'login'])->name('login')->middleware('guest:admin');
 
@@ -57,6 +59,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::get('{id}', [AdminController::class, 'show'])->name('admins.show');
             Route::get('edit/{id}', [AdminController::class, 'edit'])->name('admins.edit');
             Route::post('update/{id}', [AdminController::class, 'update'])->name('admins.update');
+            Route::get('toggle/{id}/{field}', [AdminController::class, 'toggle'])->name('admins.toggle');
             Route::get('delete/{id}', [AdminController::class, 'delete'])->name('admins.delete');
             Route::delete('deleteSelected', [AdminController::class, 'deleteSelected'])->name('admins.deleteSelected');
         });
@@ -68,6 +71,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::get('{id}', [UserController::class, 'show'])->name('users.show');
             Route::get('edit/{id}', [UserController::class, 'edit'])->name('users.edit');
             Route::post('update/{id}', [UserController::class, 'update'])->name('users.update');
+            Route::get('toggle/{id}/{field}', [UserController::class, 'toggle'])->name('users.toggle');
             Route::get('delete/{id}', [UserController::class, 'delete'])->name('users.delete');
             Route::delete('deleteSelected', [UserController::class, 'deleteSelected'])->name('users.deleteSelected');
         });
@@ -79,6 +83,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::get('{id}', [ProviderController::class, 'show'])->name('providers.show');
             Route::get('edit/{id}', [ProviderController::class, 'edit'])->name('providers.edit');
             Route::post('update/{id}', [ProviderController::class, 'update'])->name('providers.update');
+            Route::get('toggle/{id}/{field}', [ProviderController::class, 'toggle'])->name('providers.toggle');
             Route::get('delete/{id}', [ProviderController::class, 'delete'])->name('providers.delete');
             Route::delete('deleteSelected', [ProviderController::class, 'deleteSelected'])->name('providers.deleteSelected');
         });
@@ -103,22 +108,22 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
         });
         Route::group(['prefix' => 'reports'], function () {
             Route::get('/', [ReportController::class, 'index'])->name('reports.index');
-            Route::get('create', [SiteSettingController::class, 'create'])->name('reports.create');
-            Route::post('store', [SiteSettingController::class, 'store'])->name('reports.store');
-            Route::get('edit/{id}', [SiteSettingController::class, 'edit'])->name('reports.edit');
-            Route::post('update', [SiteSettingController::class, 'update'])->name('reports.update');
-            Route::get('delete/{id}', [SiteSettingController::class, 'delete'])->name('reports.delete');
-            Route::delete('deleteSelected', [SiteSettingController::class, 'deleteSelected'])->name('reports.deleteSelected');
+            Route::get('create', [ReportController::class, 'create'])->name('reports.create');
+            Route::post('store', [ReportController::class, 'store'])->name('reports.store');
+            Route::get('edit/{id}', [ReportController::class, 'edit'])->name('reports.edit');
+            Route::post('update', [ReportController::class, 'update'])->name('reports.update');
+            Route::get('delete/{id}', [ReportController::class, 'delete'])->name('reports.delete');
+            Route::delete('deleteSelected', [ReportController::class, 'deleteSelected'])->name('reports.deleteSelected');
         });
 
         Route::group(['prefix' => 'permissions'], function () {
-            Route::get('/', [PermissionController::class, 'index'])->name('permissions.index');
-            Route::get('create', [PermissionController::class, 'create'])->name('permissions.create');
+            // Route::get('/', [PermissionController::class, 'index'])->name('permissions.index');
+            // Route::get('create', [PermissionController::class, 'create'])->name('permissions.create');
             // Route::post('store', [PermissionController::class, 'store'])->name('permissions.store');
             // Route::get('edit/{id}', [PermissionController::class, 'edit'])->name('permissions.edit');
             // Route::post('update', [PermissionController::class, 'update'])->name('permissions.update');
             // Route::get('delete/{id}', [PermissionController::class, 'delete'])->name('permissions.delete');
-            Route::delete('deleteSelected', [PermissionController::class, 'deleteSelected'])->name('permissions.deleteSelected');
+            // Route::delete('deleteSelected', [PermissionController::class, 'deleteSelected'])->name('permissions.deleteSelected');
         });
         Route::group(['prefix' => 'roles'], function () {
             Route::get('/', [RoleController::class, 'index'])->name('roles.index');

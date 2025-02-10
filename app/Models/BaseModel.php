@@ -10,9 +10,9 @@ class BaseModel extends Model
 {
     use UploadTrait, ImageHandlingTrait;
 
-    protected static function boot()
-    {
-        parent::boot();
-        static::bootImageHandlingTrait();
-    }
+    // protected static function boot()
+    // {
+        // parent::boot();
+        // static::bootImageHandlingTrait();
+    // }
 } 

@@ -152,6 +152,16 @@ return [
 'select_country_id'=> 'Select Country',
 'region_name'   => 'Region Name',
 'select_all' => 'Select All',
+'regions'   => 'Regions',
+'reports'   => 'Reports',
+'roles'=> 'Roles',
+'roles_permissions'=> 'Roles & Permissions',
+'site_settings' => 'Site Settings',
+'role'  => 'Role',
+'create_provider' => 'Add Provider',
+'show_roles_has_permission' => 'Show Roles Has Permission',
+'roles_has_permission' => 'Roles Has Permission',
+'all_roles_with_permission' => 'All Roles With Permission',
 
 
 ];

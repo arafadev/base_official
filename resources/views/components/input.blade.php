@@ -34,6 +34,10 @@
             @if (isset($required) && $required) required @endif @if (isset($disabled) && $disabled) disabled @endif>
     @endif
 
+    @error($name)
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+
     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
         @error("name.{$localeCode}")
             <div class="text-danger">

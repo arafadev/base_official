@@ -48,9 +48,9 @@
                                         :options="$roles" valueKey="id" nameKey="name" :required="true"  />
                                 </div>
                                 <div class="col-md-6">
-                                    <x-file id="avatar" name="avatar" label="{{ __('admin.enter_image') }}"
-                                        :required="true" />
+                                    <x-file id="avatar" name="avatar" label="{{ __('admin.enter_image') }}" :required="false" />
                                 </div>
+                                
                             </div>
 
                             <div class="row">
@@ -72,22 +72,4 @@
         </div> <!-- .row -->
     </div> <!-- .container-fluid -->
 @endsection
-@section('scripts')
-    <script>
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function() {
-                var output = document.getElementById('image-preview-img');
-                output.src = reader.result;
-                document.getElementById('image-preview').classList.remove('d-none');
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
 
-        function removeImage() {
-            document.getElementById('image').value = "";
-            document.getElementById('image-preview-img').src = "#";
-            document.getElementById('image-preview').classList.add('d-none');
-        }
-    </script>
-@endsection

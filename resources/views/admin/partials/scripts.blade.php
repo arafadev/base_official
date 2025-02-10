@@ -17,14 +17,74 @@
 <script src='{{ asset('assets-admin') }}/js/jquery.dataTables.min.js'></script>
 <script src='{{ asset('assets-admin') }}/js/dataTables.bootstrap4.min.js'></script>
 <script>
-    $('#dataTable-1').DataTable({
-        autoWidth: true,
-        "lengthMenu": [
-            [16, 32, 64, -1],
-            [16, 32, 64, "All"]
-        ]
+    $(document).ready(function() {
+        const isRTL = $('html').attr('dir') === 'rtl'; // تحديد الاتجاه بناءً على HTML dir
+
+        const dataTable = $('#dataTable-1').DataTable({
+            autoWidth: false,
+            scrollX: true,
+            responsive: false,
+            columnDefs: [{
+                    targets: 0,
+                    width: '50px'
+                },
+                {
+                    targets: 1,
+                    width: '50px'
+                },
+                {
+                    targets: '_all',
+                    width: 'auto'
+                }
+            ],
+            lengthMenu: [
+                [16, 32, 64, -1],
+                [16, 32, 64, "All"]
+            ],
+            language: {
+                url: isRTL ?
+                    "//cdn.datatables.net/plug-ins/1.11.6/i18n/ar.json" 
+                    :
+                    "//cdn.datatables.net/plug-ins/1.11.6/i18n/en.json" 
+            },
+            dom: '<"d-flex justify-content-between align-items-center"lf>rtip', 
+            initComplete: function() {
+                if (isRTL) {
+                    $('.dataTables_filter').css({
+                        'text-align': 'left',
+                        'float': 'left' 
+                    });
+                    $('.dataTables_length').css({
+                        'float': 'right' 
+                    });
+                }
+            }
+        });
+
+        function toggleDeleteButton() {
+            const selected = $('.select-row:checked').length > 0;
+            $('#delete-selected').css('display', selected ? 'inline-block' : 'none');
+        }
+
+        dataTable.on('draw', function() {
+            $('.select-row').off('change').on('change', toggleDeleteButton);
+
+            $('#select-all').off('change').on('change', function() {
+                const checked = this.checked;
+                $('.select-row').prop('checked', checked);
+                toggleDeleteButton();
+            });
+        });
+
+        $('#delete-selected').on('click', function() {
+            const selectedIds = $('.select-row:checked').map(function() {
+                return this.value;
+            }).get();
+
+        });
     });
 </script>
+
 
 <script>
     /* defind global options */

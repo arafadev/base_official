@@ -25,8 +25,7 @@
 
         <ul class="navbar-nav flex-fill w-100 mb-2">
             @foreach ($crudRegistry as $section)
-                @if (
-                    !empty($section['base_permission']) &&
+                @if ( !empty($section['base_permission']) &&
                         auth('admin')->user()->can($section['base_permission'] . '.index'))
                     @if ($section['is_dropdown'])
                         <li class="nav-item dropdown">
@@ -34,7 +33,8 @@
                                 <a href="#dropdown-{{ $section['base_permission'] }}" data-toggle="collapse"
                                     aria-expanded="false" class="dropdown-toggle nav-link">
                                     <i class="{{ $section['icon'] }}"></i>
-                                    <span class="ml-3 item-text">{{ $section['name'] }}</span>
+                                    <span
+                                        class="ml-3 item-text">{{ __('admin' . '.' . $section['translation_key']) }}</span>
                                 </a>
                                 <ul class="collapse list-unstyled pl-4 w-100"
                                     id="dropdown-{{ $section['base_permission'] }}">
@@ -42,7 +42,8 @@
                                         @if (!empty($child['route']))
                                             <li class="nav-item">
                                                 <a class="nav-link pl-3" href="{{ route($child['route']) }}">
-                                                    <span class="ml-1 item-text">{{ $child['name'] }}</span>
+                                                    <span
+                                                        class="ml-1 item-text">{{ __('admin.' .  $child['translation_key'])  }}</span>
                                                 </a>
                                             </li>
                                         @endif
@@ -53,7 +54,7 @@
                     @else
                         @can($section['base_permission'] . '.index')
                             <x-sidebar-tab href="{{ route($section['route']) }}" icon="{{ $section['icon'] }}"
-                                name="{{ $section['name'] }}"></x-sidebar-tab>
+                                name="{{ __('admin' . '.' . $section['translation_key']) }}"></x-sidebar-tab>
                         @endcan
                     @endif
                 @endif

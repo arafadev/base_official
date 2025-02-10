@@ -23,7 +23,7 @@ class CountryController extends Controller
 
     public function index()
     {
-        return view('admin.countries.index' , ['countries' => Country::get()]);
+        return view('admin.countries.index' , ['countries' => Country::latest()->get()]);
     }
 
     public function create(){

@@ -1,0 +1,25 @@
+@extends('components.table', [                             
+    'pageTitle' => __('admin.countries'),                   // __('admin.countries') ||  __('admin.categories')  ||  __('admin.cities')
+    'title' => __('admin.countries_page'),                  // __('admin.countries_page') ||  __('admin.categories_page')  ||  __('admin.cities_page')
+    'createRoute' => route('admin.countries.create'),       // route('admin.countries.create')  || route('admin.categories.create')  || route('admin.categories.create')
+    'createText' => __('admin.create_country'),             // __('admin.create_country') || __('admin.create_category') || __('admin.create_country')
+    'deleteText' => __('admin.delete_selected'),            // Not Change It , always static.
+    'showDeleteButton' => true,                             // if CRUD need deleteButton plz, make the value of this key is true.
+    'dataRoute' => route('admin.countries.deleteSelected'), //  if CRUD need deleteButton plz, make the value of this key is true.
+    'headers' => [__('admin.image'),__('admin.country_name'), __('admin.country_code'), __('admin.iso2'), __('admin.iso3'),__('admin.actions')], // put the header of your <table></table> notic: don't put id 
+    'items' => $countries->map(function ($country) {        // $countries comes from Controller 
+        return [
+            'id' => $country->id,                           // id is nessessary => without it it will have an error in any CRUD!
+            'image' => $country->image,                     // if you need to show image plz, don't change a image key (called key as a image)
+            'name' => $country->name,
+            'country_code' => $country->country_code,
+            'iso2' => $country->iso2,
+            'iso3' => $country->iso3,
+        ];
+    }),
+    'actions' => [
+        'show' => 'admin.countries.show',                   // if you dont need a show button you can comment it or remote it from here.
+        'edit' => 'admin.countries.edit',                   // if you dont need a edit button you can comment it or remote it from here.
+        'delete' => 'admin.countries.delete',               // if you dont need a delete button you can comment it or remote it from here.
+    ],
+])

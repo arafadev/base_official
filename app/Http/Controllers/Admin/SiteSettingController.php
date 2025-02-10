@@ -20,35 +20,6 @@ class SiteSettingController extends Controller
         $site_settings = SiteSetting::pluck('value', 'key')->toArray();
         return view('admin.site_settings.index', get_defined_vars());
     }
-
-    public function create()
-    {
-        $countries = Country::get();
-        return view('admin.regions.create', get_defined_vars());
-    }
-
-
-    public function store(StoreRegionRequest  $request)
-    {
-        $data = $request->validated();
-        Region::create($data);
-        return redirect()->route('admin.regions.index')->with('success', __('admin.progress_success'));
-    }
-
-    public function edit($id)
-    {
-        $region =  Region::findOrFail($id);
-        $countries = Country::get();
-        return view('admin.regions.edit', get_defined_vars());
-    }
-
-    public function show()
-    {
-        $provider = SiteSetting::pluck('value', 'key')->toArray();
-        return view('admin.regions.show', get_defined_vars());
-    }
-
-
     public function update(UpdateSiteSettingRequest $request)
     {
         $data = $request->validated();
@@ -61,11 +32,6 @@ class SiteSettingController extends Controller
         return redirect()->route('admin.site_settings.index')->with('success', __('admin.settings_updated_successfully'));
     }
 
+    
 
-    public function deleteSelected(Request $request)
-    {
-        $ids = $request->input('ids', []);
-        SiteSetting::whereIn('id', $ids)->delete();
-        return response()->json(['success' => true, 'message' => __('admin.progress_success')]);
-    }
 }
