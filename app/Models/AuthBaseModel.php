@@ -16,14 +16,17 @@ class AuthBaseModel extends Authenticatable
 
     const IMAGEPATH = 'users';
 
-    // protected $hidden = ['password'];
-
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    //     // 'password' => 'hashed',
-    //     'is_notify'  => 'boolean',
-    //     'is_blocked' => 'boolean',
-    // ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        
+        'is_notify'  => 'boolean',
+        'is_blocked' => 'boolean',
+    ];
 
     // public function setPhoneAttribute($value)
     // {

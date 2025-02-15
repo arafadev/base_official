@@ -8,6 +8,7 @@ use Intervention\Image\Facades\Image;
 trait UploadTrait
 {
 
+
   public function uploadAllTyps($file, $directory, $width = null, $height = null)
   {
     if (!File::isDirectory('storage/images/' . $directory)) {

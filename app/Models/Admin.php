@@ -15,16 +15,7 @@ class Admin extends AuthBaseModel
 
     protected $fillable = ['country_code', 'role_id', 'email', 'name', 'phone', 'avatar', 'is_blocked', 'is_notify', 'status', 'password'];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-        'is_notify'  => 'boolean',
-        'is_blocked' => 'boolean',
-    ];
+  
 
     public function getFullPhoneAttribute()
     {
@@ -68,7 +59,6 @@ class Admin extends AuthBaseModel
         parent::boot();
         static::deleted(function ($model) {
             if (isset($model->attributes['avatar'])) {
-                dd('not enter here ');
                 $model->deleteFile($model->attributes['avatar'], static::IMAGEPATH);
             }
         });
