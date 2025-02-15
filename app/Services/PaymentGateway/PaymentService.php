@@ -86,71 +86,38 @@ class PaymentService
      * @return \Illuminate\Contracts\View\View The view for the payment status.
     */
     public static function checkPayment($data)
-    {
-        // Retrieve the payment transaction.
-        $transaction = PaymentTransaction::where(
-            'transaction_id', $data['transaction_id']
-        )->whereStatus('pending')->firstOrFail();
+	{
+		// Retrieve the payment transaction.
+		$transaction = PaymentTransaction::where(
+			'transaction_id', $data['transaction_id']
+		)->firstOrFail();
 
-        // If payment status is false, return failed view.
-        if ($data['status'] == false) {
-            $transaction->update([
-                'status' =>  'failed'
-            ]);
-            return redirect()->route('payment.callbackStatus', [
+		// If payment status is false, return failed view.
+		if ($data['status'] == false) {
+			$transaction->update([
+				'status' => 'failed'
+			]);
+			return redirect()->route('payment.callbackStatus', [
 				'transaction_id' => $data['transaction_id'],
 				'status'         => 'failed',
 				'msg'            => __('apis.payment_failed')
 			]);
-        }
-        // Update the transaction status.
-        $transaction->update([
-            'status' => 'completed'
-        ]);
+		}
+		// Update the transaction status.
+		$transaction->update([
+			'status' => 'completed'
+		]);
 
-        $collectible = $transaction->trans; 
-        // $collectible_id = $collectible->id;
-
-    if ($transaction->trans_type === 'App\Models\Reservation') {
-
-        if ($collectible->status === ReservationStatus::NEW || $collectible->status === ReservationStatus::PENDING) {
-            $collectible->update([
-                'status' => 'current',
-                'pay_status' => PayStatus::DONE
-            ]);
-            $approvedType = $collectible->refresh()->status == ReservationStatus::CURRENT ? ReservationStatus::CURRENT : ReservationStatus::PENDING;
-            $collectible->teacher?->notify(new ReservationPaidNotification($approvedType));
-        }
-    } else {
-        $paymentService = new PaymentCollectableService();
-        $paymentDetails = $paymentService->getCollectiblePayDetails($collectible);
-
-        Collectible::create([
-            'user_id' => $transaction->data['user_id'] ,
-            'collectable_type' => get_class($collectible),
-            'collectable_id' => $collectible->id,
-            'price' => $paymentDetails['original_price'],
-            'vat_ratio' => $paymentDetails['vat_ratio'],
-            'vat_amount' => $paymentDetails['vat_amount'],
-            'admin_percentage' => settings('admin_percentage'),
-            'admin_amount' => $paymentDetails['original_price'] * (settings('admin_percentage') / 100),
-            'total_amount' => $paymentDetails['total_price'],
-            'is_exam' =>$transaction->data['type'] === 'exam' ? 1 : 0,
-        ]);
-    }
-
-    // Return success view.
-    // return view('payment.success', [
-    //     'trans_id' => $data['transaction_id'],
-    //     'status' => $data['status']
-    // ]);
-
-    return redirect()->route('payment.callbackStatus', [
-        'transaction_id' => $data['transaction_id'],
-        'status'         => 'success',
-        'msg'            => __('apis.payment_success')
-    ]);
-    }
+		// If transaction type is CHARGEWALLET, charge the wallet.
+		if ($transaction->type == PaymentTransactions::CHARGEWALLET) {
+			PaymentService::chargeWallet($transaction);
+		}
+		return redirect()->route('payment.callbackStatus', [
+			'transaction_id' => $data['transaction_id'],
+			'status'         => 'success',
+			'msg'            => __('apis.payment_success')
+		]);
+	}
 
     /**
      * Charge the wallet with a transaction amount.
