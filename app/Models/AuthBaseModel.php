@@ -91,7 +91,8 @@ class AuthBaseModel extends Authenticatable
             'code_expire' => Carbon::now()->addMinute(),
         ]);
         $this->sendCodeAtSms($this->code);
-        return new UserResource($this);
+        // return new UserResource($this);
+        return ['user' => $this];
     }
 
     private function activationCode()

@@ -143,4 +143,14 @@ return [
         'group_name' => 'sms',
         'translation_key' => 'sms_packages',
     ],
+    [
+        'name' => 'payment_brands',  
+        'route' => 'admin.payment_brands.index',
+        'icon' => 'fe fe-globe',
+        'base_permission' => 'payment_brands',
+        'is_dropdown' => false,
+        'has_permission' => true,
+        'group_name' => 'payment_brands',
+        'translation_key' => 'payment_brands',
+    ],
 ];

@@ -14,15 +14,15 @@ class UpdateAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'    => 'required|string',
+            'name'          => 'required|string',
             'country_code'  => 'required|exists:countries,country_code',
-            'phone'     => 'required|unique:admins,phone,' . $this->id ,
-            'role_id'   => 'required|exists:roles,id',
-            'email'     => 'required|unique:admins,email,' . $this->id ,
-            'password' => 'required|string',
-            'avatar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', 
-            'is_notify' => 'nullable|boolean',
-            'is_blocked' => 'sometimes|boolean',
+            'phone'         => 'required|unique:admins,phone,' . $this->id ,
+            'role_id'       => 'required|exists:roles,id',
+            'email'         => 'required|unique:admins,email,' . $this->id ,
+            'password'      => 'required|string',
+            'avatar'        => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', 
+            'is_notify'     => 'nullable|boolean',
+            'is_blocked'    => 'sometimes|boolean',
         ];
     }
 

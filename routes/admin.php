@@ -12,12 +12,11 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\PaymentBrandController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Admin\RoleAndPermissions\RoleController;
-use App\Http\Controllers\Admin\RoleAndPermissions\PermissionController;
-
 Route::redirect('/admin', '/admin/login');
 
 Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'], 'as' => 'admin.'], function () {
@@ -117,15 +116,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::delete('deleteSelected', [ReportController::class, 'deleteSelected'])->name('reports.deleteSelected');
         });
 
-        Route::group(['prefix' => 'permissions'], function () {
-            // Route::get('/', [PermissionController::class, 'index'])->name('permissions.index');
-            // Route::get('create', [PermissionController::class, 'create'])->name('permissions.create');
-            // Route::post('store', [PermissionController::class, 'store'])->name('permissions.store');
-            // Route::get('edit/{id}', [PermissionController::class, 'edit'])->name('permissions.edit');
-            // Route::post('update', [PermissionController::class, 'update'])->name('permissions.update');
-            // Route::get('delete/{id}', [PermissionController::class, 'delete'])->name('permissions.delete');
-            // Route::delete('deleteSelected', [PermissionController::class, 'deleteSelected'])->name('permissions.deleteSelected');
-        });
         Route::group(['prefix' => 'roles'], function () {
             Route::get('/', [RoleController::class, 'index'])->name('roles.index');
             Route::get('create', [RoleController::class, 'create'])->name('roles.create');
@@ -146,6 +136,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::post('change', [SMSController::class, 'change'])->name('sms.change');
             Route::post('update/{id}', [SMSController::class, 'update'])->name('sms.update');
         });
-
     });
 });

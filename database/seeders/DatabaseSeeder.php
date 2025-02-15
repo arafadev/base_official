@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RegionTableSeeder::class);
         $this->call(CityTableSeeder::class);
         $this->call(ComplaintTableSeeder::class);
+        $this->call(PaymentBrandTableSeeder::class);
         $this->call(SmsTableSeeder::class);
 
 
