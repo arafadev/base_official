@@ -24,8 +24,13 @@
         @endphp
 
         <ul class="navbar-nav flex-fill w-100 mb-2">
+
+            <x-sidebar-tab href="" icon="fe fe-home"
+                name="{{ __('admin.home') }}"></x-sidebar-tab>
+
             @foreach ($crudRegistry as $section)
-                @if ( !empty($section['base_permission']) &&
+                @if (
+                    !empty($section['base_permission']) &&
                         auth('admin')->user()->can($section['base_permission'] . '.index'))
                     @if ($section['is_dropdown'])
                         <li class="nav-item dropdown">
@@ -43,7 +48,7 @@
                                             <li class="nav-item">
                                                 <a class="nav-link pl-3" href="{{ route($child['route']) }}">
                                                     <span
-                                                        class="ml-1 item-text">{{ __('admin.' .  $child['translation_key'])  }}</span>
+                                                        class="ml-1 item-text">{{ __('admin.' . $child['translation_key']) }}</span>
                                                 </a>
                                             </li>
                                         @endif

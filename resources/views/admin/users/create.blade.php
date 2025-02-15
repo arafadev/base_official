@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <x-file id="avatar" name="avatar" label="{{ __('admin.enter_image') }}"
-                                        :required="true" />
+                                        :required="false" />
                                 </div>
                             </div>
 

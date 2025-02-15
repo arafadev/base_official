@@ -21,4 +21,6 @@ Route::name('site.')->controller(SiteController::class)->group(function () {
     Route::get('/contact', 'contact')->name('contact');
 });
 
+// Route::get('login' , function (){ return 'login page';})->name('login');
+
 

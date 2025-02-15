@@ -19,7 +19,7 @@ class UpdateAdminRequest extends FormRequest
             'phone'     => 'required|unique:admins,phone,' . $this->id ,
             'role_id'   => 'required|exists:roles,id',
             'email'     => 'required|unique:admins,email,' . $this->id ,
-            'password' => 'nullable|string',
+            'password' => 'required|string',
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', 
             'is_notify' => 'nullable|boolean',
             'is_blocked' => 'sometimes|boolean',

@@ -10,7 +10,7 @@ use App\Models\Admin;
 class SyncCRUD extends Command
 {
     protected $signature = 'sync:crud';
-    protected $description = 'Sync CRUD registry to database';
+    protected $description = 'Sync CRUD registry';
 
     protected $defaultPermissions = ['index', 'show', 'create', 'store', 'update', 'delete', 'deleteSelected'];
 

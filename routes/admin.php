@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\SMSController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\RegionController;
@@ -138,6 +139,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(). '/admin', 'middlewar
             Route::post('update/roles_has_permission/{role_id}', [RoleController::class, 'updateRoleHasPermission'])->name('role.roles_has_permission.update');
             Route::get('delete/{id}', [RoleController::class, 'delete'])->name('roles.delete');
             Route::delete('deleteSelected', [RoleController::class, 'deleteSelected'])->name('roles.deleteSelected');
+        });
+
+        Route::group(['prefix' => 'sms'], function () {
+            Route::get('/', [SMSController::class, 'index'])->name('sms.index');
+            Route::post('change', [SMSController::class, 'change'])->name('sms.change');
+            Route::post('update/{id}', [SMSController::class, 'update'])->name('sms.update');
         });
 
     });

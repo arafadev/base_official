@@ -40,11 +40,6 @@
                 @endif
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
-                <span class="fe fe-grid fe-16"></span>
-            </a>
-        </li>
         <li class="nav-item nav-notif position-relative">
             <a class="nav-link text-muted my-2 position-relative" href="#" data-toggle="modal" data-target=".modal-notif">
                 <span class="fe fe-bell fe-16"></span>
