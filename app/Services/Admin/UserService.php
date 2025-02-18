@@ -39,6 +39,8 @@ class UserService
         switch ($field) {
             case 'is_blocked':
                 $user->is_blocked = !$user->is_blocked;
+                break;
+            case 'is_notify':
                 $user->is_notify = !$user->is_notify;
                 break;
             case 'is_approved':
@@ -46,9 +48,6 @@ class UserService
                 break;
             case 'is_active':
                 $user->is_active = !$user->is_active;
-                break;
-            case 'is_notify':
-                $user->is_notify = !$user->is_notify;
                 break;
         }
 

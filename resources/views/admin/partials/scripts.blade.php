@@ -18,12 +18,12 @@
 <script src='{{ asset('assets-admin') }}/js/dataTables.bootstrap4.min.js'></script>
 <script>
     $(document).ready(function() {
-        const isRTL = $('html').attr('dir') === 'rtl'; // تحديد الاتجاه بناءً على HTML dir
+        const isRTL = $('html').attr('dir') === 'rtl';
 
         const dataTable = $('#dataTable-1').DataTable({
             autoWidth: false,
-            scrollX: true,
-            responsive: false,
+            responsive: true, // اجعل الجدول يستجيب للحجم
+            scrollX: true, // تعطيل التمرير الأفقي
             columnDefs: [{
                     targets: 0,
                     width: '50px'
@@ -43,22 +43,18 @@
             ],
             language: {
                 url: isRTL ?
-                    "//cdn.datatables.net/plug-ins/1.11.6/i18n/ar.json" 
-                    :
-                    "//cdn.datatables.net/plug-ins/1.11.6/i18n/en.json" 
+                    "//cdn.datatables.net/plug-ins/1.11.6/i18n/ar.json" :
+                    "//cdn.datatables.net/plug-ins/1.11.6/i18n/en.json"
             },
-            dom: '<"d-flex justify-content-between align-items-center"lf>rtip', 
-            initComplete: function() {
-                if (isRTL) {
-                    $('.dataTables_filter').css({
-                        'text-align': 'left',
-                        'float': 'left' 
-                    });
-                    $('.dataTables_length').css({
-                        'float': 'right' 
-                    });
-                }
-            }
+            dom: '<"d-flex justify-content-between align-items-center"lf>rtip'
+        });
+
+        let resizeTimer;
+        $(window).on('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                dataTable.columns.adjust().draw();
+            }, 300);
         });
 
         function toggleDeleteButton() {
