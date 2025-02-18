@@ -25,7 +25,7 @@
 
         <ul class="navbar-nav flex-fill w-100 mb-2">
 
-            <x-sidebar-tab href="" icon="fe fe-home"
+            <x-sidebar-tab href="{{ route('admin.dashboard') }}" icon="fe fe-home"
                 name="{{ __('admin.home') }}"></x-sidebar-tab>
 
             @foreach ($crudRegistry as $section)

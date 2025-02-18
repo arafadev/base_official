@@ -97,6 +97,7 @@
                         ).attr('disable', true)
                     },
                     success: (response) => {
+                        $(this).find(".submit_button").html("{{__('admin.modernization')}}").attr('disable',false)
                         toastr.success(
                             '{{ __('admin.packge_changed_successfully') }}'
                         )
