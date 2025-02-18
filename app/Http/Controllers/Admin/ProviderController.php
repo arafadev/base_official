@@ -12,12 +12,14 @@ use App\Http\Requests\Admin\Provider\UpdateProviderRequest;
 
 class ProviderController extends Controller
 
-{   public function index()
+{
+    public function index()
     {
-        return view('admin.providers.index' , ['providers' => Provider::get()]);
+        return view('admin.providers.index', ['providers' => Provider::get()]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('admin.providers.create', ['countries' => Country::get()]);
     }
 
@@ -30,14 +32,15 @@ class ProviderController extends Controller
 
     public function edit($id)
     {
-       $provider =  Provider::findOrFail($id);
-       $countries = Country::get();
-        return view('admin.providers.edit'  ,get_defined_vars());
+        $provider =  Provider::findOrFail($id);
+        $countries = Country::get();
+        return view('admin.providers.edit', get_defined_vars());
     }
 
-    public function show($id){
-       $countries = Country::get();
-       $provider = Provider::findOrFail($id);
+    public function show($id)
+    {
+        $countries = Country::get();
+        $provider = Provider::findOrFail($id);
         return view('admin.providers.show', get_defined_vars());
     }
 
@@ -49,7 +52,7 @@ class ProviderController extends Controller
         $admin->update($data);
         return redirect()->route('admin.providers.index')->with('success', __('admin.progress_success'));
     }
-    
+
     public function toggle(Request $request)
     {
         $provider = Provider::findOrFail($request->id);
@@ -58,13 +61,14 @@ class ProviderController extends Controller
         switch ($field) {
             case 'is_blocked':
                 $provider->is_blocked = !$provider->is_blocked;
-                $provider->is_approved = !$provider->is_approved;
                 break;
             case 'is_approved':
                 $provider->is_approved = !$provider->is_approved;
                 break;
             case 'is_active':
                 $provider->is_active = !$provider->is_active;
+            case 'is_notify':
+                $provider->is_notify = !$provider->is_notify;
                 break;
         }
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password', 100);
             $table->string('avatar', 50)->nullable();
             $table->boolean('is_active')->default(false);
+            $table->boolean('is_notify')->default(false);
             $table->boolean('is_blocked')->default(false);
             $table->boolean('is_approved')->default(ProviderApproved::PENDING);
             $table->string('code', 10)->nullable();

@@ -106,7 +106,6 @@ public function updateRoleHasPermission(Request $request, $role_id)
   $role->permissions()->sync($request->permissions);
   app(PermissionRegistrar::class)->forgetCachedPermissions();
 
-
     return to_route('admin.role.show_roles_has_permission.show')->with('success', __('admin.progress_success'));
 }
 
