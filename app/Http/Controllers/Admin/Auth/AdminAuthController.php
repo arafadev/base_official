@@ -44,6 +44,6 @@ class AdminAuthController extends Controller
         //     'alert-type' => 'success'
         // ];
 
-        return redirect('admin/login');
+        return redirect( '/' .lang() . '/admin/login');
     }
 }

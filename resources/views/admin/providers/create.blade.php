@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <x-file id="avatar" name="avatar" label="{{ __('admin.enter_image') }}"
-                                        :required="true" />
+                                        :required="false" />
                                 </div>
                             </div>
 
@@ -69,7 +69,7 @@
         </div> <!-- .row -->
     </div> <!-- .container-fluid -->
 @endsection
-@section('scripts')
+{{-- @section('scripts')
     <script>
         function previewImage(event) {
             var reader = new FileReader();
@@ -87,4 +87,4 @@
             document.getElementById('image-preview').classList.add('d-none');
         }
     </script>
-@endsection
+@endsection --}}

@@ -9,7 +9,7 @@
     'headers' => [ __('admin.image'), __('admin.name'), __('admin.email'), __('admin.phone'), __('admin.role'), __('admin.is_blocked'), __('admin.is_notify'), __('admin.created_at'), __('admin.actions')],
     'items' => $admins->map(function ($admin) {
         return [
-            'id' => $admin->id,
+            'id' => $admin->id, 
             'image' => $admin->avatar,
             'name' => $admin->name,
             'email' => $admin->email,

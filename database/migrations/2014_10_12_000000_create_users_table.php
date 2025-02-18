@@ -18,8 +18,9 @@ return new class extends Migration
           $table->string('email',50);
           $table->string('password',100)->nullable();
           $table->string('avatar', 50)->nullable();
-          $table->boolean('is_active')->default(false);
-          $table->boolean('is_blocked')->default(false);
+          $table->boolean('is_active')->default(false);   // by otp active
+          $table->boolean('is_approved')->default(false); // by admin 
+          $table->boolean('is_blocked')->default(false);  // by admin
           $table->string('lang', 3)->default('ar');
           $table->boolean('is_notify')->default(true);
           $table->string('code', 10)->nullable();

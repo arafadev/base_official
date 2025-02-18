@@ -128,5 +128,18 @@ return [
 'ip'    => 'عنوان IP',
 'agent' => 'العميل',
 'method' => 'الطريقه',
+'sms'   => 'الرسائل',
+'the_package_has_been_successfully_activated' => 'تمت تنشيط الباقة بنجاح',
+'update'    => 'تحديث',
+'user_name' => 'اسم المستخدم',
+'sender_name'   => 'اسم المرسل',
+'modernization' => 'تحديث',
+'packge_changed_successfully'   => 'تم تغيير الباقه بنجاح',
+'sms_packages'       => 'باقات الرسائل',
+'payment_brands'    => 'براندات الدفع',
+'create_payment_brand'  => 'اضافه براند دفع',
+'type'  => 'النوع',
+
+
 
 ];

@@ -18,6 +18,6 @@ class AdminTableSeeder extends Seeder
             'role_id'      => 1,
         ]);
 
-        Admin::factory()->count(30)->create();
+        // Admin::factory()->count(30)->create();
     }
 }

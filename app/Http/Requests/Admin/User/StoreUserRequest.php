@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\Admin\User;
 
+use App\Http\Requests\BaseRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest
+class StoreUserRequest extends BaseRequest
 {
     public function authorize(): bool
     {
@@ -16,10 +17,10 @@ class StoreUserRequest extends FormRequest
         return [
             'name'    => 'required|string',
             'country_code'  => 'required|exists:countries,country_code',
-            'phone'     => 'required|unique:admins,phone',
+            'phone'     => 'required|unique:admins,phone|digits_between:7,15',
             'email'     => 'required|unique:admins,email',
             'password'  => 'required',
-            'avatar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', 
+            'avatar' => 'nullable|image|mimes:' . $this->mimesImage(), 
             'is_active' => 'nullable|boolean',
             'is_notify' => 'nullable|boolean',
             'is_blocked' => 'nullable|boolean',

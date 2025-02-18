@@ -162,6 +162,7 @@ return [
 'show_roles_has_permission' => 'Show Roles Has Permission',
 'roles_has_permission' => 'Roles Has Permission',
 'all_roles_with_permission' => 'All Roles With Permission',
+'sms'   => 'Messages Packages'
 
 
 ];

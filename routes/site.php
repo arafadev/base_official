@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Site\SiteController;
+use App\Services\PaymentGateway\PaymentService;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::name('site.')->controller(SiteController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/about', 'about')->name('about');
@@ -21,4 +23,9 @@ Route::name('site.')->controller(SiteController::class)->group(function () {
     Route::get('/contact', 'contact')->name('contact');
 });
 
-
+// Route::get('login' , function (){ return 'login page';})->name('login');
+// payment
+// هنا بيرد عليك بيقولك نجحت العمليه او فشلت ف حاله العمليه نجحت او فشلت هيرن الراوت دا 
+Route::get('payment/get-payment-status/{brand_id?}',  [PaymentService::class, 'callback'])->name('payment.getPaymentStatus');
+Route::get('payment/callbackStatus/{transaction_id}',  [PaymentService::class, 'callbackStatus'])->name('payment.callbackStatus');
+          // payment

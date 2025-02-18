@@ -18,7 +18,7 @@ class SmsService
     public function sendSms($phone, $msg )
     {
         
-        return false; //^ this line is for test
+        return false; //^ this line is for develop not production 
 
         $data = SMS::where(['active' => 1])->first();
         switch ($data->key) {

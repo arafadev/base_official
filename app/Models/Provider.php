@@ -27,6 +27,8 @@ class Provider extends AuthBaseModel
         'code_expire'
     ];
 
+    
+
     public function getBlockedIconAttribute()
     {
         $url = route('admin.providers.toggle', ['id' => $this->id, 'field' => 'is_blocked']);
@@ -82,9 +84,8 @@ class Provider extends AuthBaseModel
     protected static function boot()
     {
         parent::boot();
-        static::deleted(function ($model) {
+        static::deleting(function ($model) {
             if (isset($model->attributes['avatar'])) {
-                dd('not enter here ');
                 $model->deleteFile($model->attributes['avatar'], static::IMAGEPATH);
             }
         });

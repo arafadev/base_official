@@ -56,6 +56,7 @@ return [
         'group_name' => 'countries',
         'translation_key' => 'countries',
     ],
+ 
 
     [
         'name' => 'Regions',
@@ -132,4 +133,15 @@ return [
         ],
     ],
 
+    [
+        'name' => 'SMS', 
+        'route' => 'admin.sms.index',
+        'icon' => 'fe fe-globe',
+        'base_permission' => 'sms',
+        'is_dropdown' => false,
+        'has_permission' => true,
+        'group_name' => 'sms',
+        'translation_key' => 'sms_packages',
+    ],
+   
 ];

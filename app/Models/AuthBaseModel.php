@@ -16,14 +16,17 @@ class AuthBaseModel extends Authenticatable
 
     const IMAGEPATH = 'users';
 
-    // protected $hidden = ['password'];
-
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    //     // 'password' => 'hashed',
-    //     'is_notify'  => 'boolean',
-    //     'is_blocked' => 'boolean',
-    // ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        
+        'is_notify'  => 'boolean',
+        'is_blocked' => 'boolean',
+    ];
 
     // public function setPhoneAttribute($value)
     // {
@@ -91,7 +94,8 @@ class AuthBaseModel extends Authenticatable
             'code_expire' => Carbon::now()->addMinute(),
         ]);
         $this->sendCodeAtSms($this->code);
-        return new UserResource($this);
+        // return new UserResource($this);
+        return ['user' => $this];
     }
 
     private function activationCode()

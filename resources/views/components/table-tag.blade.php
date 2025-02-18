@@ -36,7 +36,7 @@
                     @foreach ($item as $key => $value)
                         @if (!in_array($key, ['id', 'actions']))
                             <td class="text-center">
-                                @if (Str::contains($key, 'image'))
+                                @if (Str::contains($key, 'image'))   {{-- <<<<==== Plz.. not change image key to avatar or any another key --}}
                                     <img src="{{ $value }}" alt="Image"
                                         style="width: 50px; height: 50px; object-fit: cover;">
                                 @elseif ($key === 'phone')
