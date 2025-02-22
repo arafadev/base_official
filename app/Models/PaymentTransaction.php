@@ -22,6 +22,10 @@ class PaymentTransaction extends Model
         'data',
     ];
 
+    protected $casts = [
+        'getaway_response' => 'array',
+    ];
+
     public function getDataAttribute($value)
 	{
 		return unserialize($value);

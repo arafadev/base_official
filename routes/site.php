@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\SiteController;
-use App\Services\PaymentGateway\PaymentService;
+use App\Http\Controllers\Payments\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +26,9 @@ Route::name('site.')->controller(SiteController::class)->group(function () {
 // Route::get('login' , function (){ return 'login page';})->name('login');
 // payment
 // هنا بيرد عليك بيقولك نجحت العمليه او فشلت ف حاله العمليه نجحت او فشلت هيرن الراوت دا 
-Route::get('payment/get-payment-status/{brand_id?}',  [PaymentService::class, 'callback'])->name('payment.getPaymentStatus');
-Route::get('payment/callbackStatus/{transaction_id}',  [PaymentService::class, 'callbackStatus'])->name('payment.callbackStatus');
-          // payment
+// Route::get('payment/get-payment-status/{brand_id?}',  [PaymentService::class, 'callback'])->name('payment.getPaymentStatus');
+// Route::get('payment/callbackStatus/{transaction_id}',  [PaymentService::class, 'callbackStatus'])->name('payment.callbackStatus');
+//           // payment
+
+Route::get('/payment-success/{transaction_id}', [PaymentController::class, 'success'])->name('payment.success');
+Route::get('/payment-failed', [PaymentController::class, 'failed'])->name('payment.failed');
