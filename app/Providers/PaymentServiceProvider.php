@@ -13,7 +13,7 @@ class PaymentServiceProvider extends ServiceProvider
      */
     public function register(): void {
 
-        $this->app->bind(PaymentGatewayInterface::class, PaymobService::class);
+        // $this->app->bind(PaymentGatewayInterface::class, PaymobService::class);
         
         //if you have multi payment gateways and want to use one of them you shoud send the pramater with data
 //        $this->app->singleton(PaymentGatewayInterface::class, function ($app) {
