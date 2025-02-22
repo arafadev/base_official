@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Payments;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Interfaces\Payments\PaymentGatewayInterface;
+use App\Services\Payments\PaymobService;
 
-class PaymentController extends Controller
+class PaymobPaymentController extends Controller
 {
 
-    public function __construct(protected PaymentGatewayInterface $paymentGateway) {}
+    public function __construct(protected PaymobService $paymentGateway) {}
 
 
     public function paymentProcess(Request $request)
@@ -32,14 +32,14 @@ class PaymentController extends Controller
         return redirect()->route('payment.failed');
     }
 
-    public function success(Request $request, $transaction_id)
+    public function success(Request $request)
     {
         $status = in_array($request->status, [
 			'success',
 			'failed',
 		]) ? $request->status : 'failed';
 
-        return view('payments.success', compact('status', 'transaction_id'));
+        return view('payments.success', ['status'   => $request->status ,  'transaction_id' => $request->transaction_id]);
     }
 
     public function failed()

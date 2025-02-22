@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Payments\PaymentController;
+use App\Http\Controllers\Payments\PaymobPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/payment/process', [PaymentController::class, 'paymentProcess']);
-Route::match(['GET','POST'],'/payment/callback', [PaymentController::class, 'callBack']);
+Route::post('/payment/process', [PaymobPaymentController::class, 'paymentProcess']);
+Route::match(['GET','POST'],'/payment/callback', [PaymobPaymentController::class, 'callBack']);

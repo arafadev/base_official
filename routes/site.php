@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\SiteController;
-use App\Http\Controllers\Payments\PaymentController;
+use App\Http\Controllers\Payments\PaymobPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +30,5 @@ Route::name('site.')->controller(SiteController::class)->group(function () {
 // Route::get('payment/callbackStatus/{transaction_id}',  [PaymentService::class, 'callbackStatus'])->name('payment.callbackStatus');
 //           // payment
 
-Route::get('/payment-success/{transaction_id}', [PaymentController::class, 'success'])->name('payment.success');
-Route::get('/payment-failed', [PaymentController::class, 'failed'])->name('payment.failed');
+Route::get('/payment-success', [PaymobPaymentController::class, 'success'])->name('payment.success');
+Route::get('/payment-failed', [PaymobPaymentController::class, 'failed'])->name('payment.failed');
