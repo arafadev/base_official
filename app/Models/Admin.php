@@ -25,13 +25,13 @@ class Admin extends AuthBaseModel
         return $this->belongsTo(Role::class);
     }
 
-    // protected static function boot()
-    // {
-    //     parent::boot();
-    //     static::deleted(function ($model) {
-    //         if (isset($model->attributes['avatar'])) {
-    //             $model->deleteFile($model->attributes['avatar'], static::IMAGEPATH);
-    //         }
-    //     });
-    // }
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleted(function ($model) {
+            if (isset($model->attributes['avatar'])) {
+                $model->deleteFile($model->attributes['avatar'], static::IMAGEPATH);
+            }
+        });
+    }
 }

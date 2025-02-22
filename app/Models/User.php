@@ -28,6 +28,4 @@ class User extends AuthBaseModel
         'code_expire',
     ];
 
-
-  
 }
