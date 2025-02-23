@@ -17,6 +17,7 @@ class PaymentGatwaysEnums extends Base
     public const STRIPE = 'Stripe';
     public const PAYMOB = 'Paymob';
     public const MYFATOORAH = 'Myfatoorah';
+    public const TAP = 'Tap';
 
 
 
