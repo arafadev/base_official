@@ -32,6 +32,8 @@ return new class extends Migration
 
             $table->morphs('trans');
 
+            $table->text('data')->nullable();
+
             $table->timestamps();
             
         });

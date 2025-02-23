@@ -53,6 +53,8 @@ return [
 	'some_thing_error'    => 'عذرا حدث خطأ ما',
 	'server_error'        => 'عذرا حدث خطأ ما',
 	'activeCode'		  =>'كود التفعيل الخاص بك للتسجيل بالمنصة هو ( :code )',
+	'payment_success'     => 'تمت عملية الدفع بنجاح',
+	'payment_failed'      => 'فشلت عملية الدفع',
 
 	// new keys
 ];
