@@ -43,7 +43,7 @@
 <body>
     <div class="container">
         <h1>تمت عملية الدفع بنجاح! </h1>
-        <p> رقم العمليه : {{ isset($transaction_id) && !empty($transaction_id) ? $transaction_id : '' }} </p>
+        <p> (رقم العمليه) {{ isset($transaction_id) && !empty($transaction_id) ? $transaction_id : '' }} </p>
         <p>شكراً لك على الدفع. سنقوم بمعالجة طلبك في أقرب وقت ممكن.</p>
     </div>
 </body>

@@ -16,5 +16,17 @@ return [
         'BASE_URL' => 'https://api.tap.company',
         'API_KEY' => 'sk_test_FtYkeTOXGvwQsEUl9KVxNRAS',
     ],
+    'Paypal' => [
+        
+        'sandbox_url_for_login' => 'https://sandbox.paypal.com',         //TODO click on login with paypal as a business account
+        'business_email'    => 'sb-n4h7n30375801@business.example.com',  // business account email
+        'business_password' => ')K2k_@RT',                               // business account password
+        'personal_email'    => 'sb-3gaao32962851@personal.example.com',  // personl account email
+        'personal_password'    => 'D=W,J;n8',                            // personl account password
+
+        'BASE_URL' => 'https://api-m.sandbox.paypal.com',                // LIVE URL: https://api-m.paypal.com
+        'CLIENT_ID' => 'Ad3sysbLAj6oLZyQPLlzQbHTLEr-rZwXA-sScfR7sWV30pbvJVc11m1Wyq4Vak7okNm4A0IE9iEAoqFX',
+        'CLIENT_SECRET' => 'EIRVcQUiJtU9_JjTWtUvy3ItDcnO4UciEIQOUJ79Zt32cx5bBRYKIML3BwNaSIeMYJLgwXCi6dOgxc42',
+    ],
     
 ];

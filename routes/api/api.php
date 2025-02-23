@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Payments\PaymentController;
 use App\Http\Controllers\Payments\TapPaymentController;
 use App\Http\Controllers\Payments\PaymobPaymentController;
+use App\Http\Controllers\Payments\PayPalPaymentController;
 use App\Http\Controllers\Payments\MyfatoorahPaymentController;
 
 /*
@@ -25,5 +26,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::post('/payment/process', [PaymobPaymentController::class, 'paymentProcess']);
 // Route::match(['GET','POST'],'/payment/callback', [PaymobPaymentController::class, 'callBack']);
 
-Route::post('/payment/process', [MyfatoorahPaymentController::class, 'paymentProcess']);
-Route::match(['GET','POST'],'/payment/callback', [MyfatoorahPaymentController::class, 'callBack']);
+Route::post('/payment/process', [PayPalPaymentController::class, 'paymentProcess']);
+Route::match(['GET','POST'],'/payment/callback', [PayPalPaymentController::class, 'callBack']);
