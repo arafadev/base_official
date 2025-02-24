@@ -14,7 +14,11 @@ return [
     ],
     'Tap' => [
         'BASE_URL' => 'https://api.tap.company',
-        'API_KEY' => 'sk_test_FtYkeTOXGvwQsEUl9KVxNRAS',
+        'SECRET_KEY' => 'sk_test_3X4XwzWruRdFxqhhgDcdmddGqNQ57YJyBc2khmfm',
+    ],
+    'Moyasar' => [
+        'BASE_URL' => 'https://api.moyasar.com',
+        'SECRET_KEY' => 'sk_test_3X4XwzWruRdFxqhhgDcdmddGqNQ57YJyBc2khmfm',
     ],
     'Paypal' => [
         

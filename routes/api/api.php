@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Payments\MoyasarPaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Payments\PaymentController;
@@ -26,5 +27,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::post('/payment/process', [PaymobPaymentController::class, 'paymentProcess']);
 // Route::match(['GET','POST'],'/payment/callback', [PaymobPaymentController::class, 'callBack']);
 
-Route::post('/payment/process', [PayPalPaymentController::class, 'paymentProcess']);
-Route::match(['GET','POST'],'/payment/callback', [PayPalPaymentController::class, 'callBack']);
+Route::post('/payment/process', [MoyasarPaymentController::class, 'paymentProcess']);
+Route::match(['GET','POST'],'/payment/callback', [MoyasarPaymentController::class, 'callBack']);
