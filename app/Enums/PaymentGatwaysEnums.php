@@ -19,6 +19,7 @@ class PaymentGatwaysEnums extends Base
     public const MYFATOORAH = 'Myfatoorah';
     public const TAP = 'Tap';
     public const MOYASAR = 'Moyasar';
+    public const ALRAJHI = 'Alrajhi';
 
 
 

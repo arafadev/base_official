@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Payments\AlrajhiPaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Payments\PaymentController;
@@ -28,5 +29,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::post('/payment/process', [PaymobPaymentController::class, 'paymentProcess']);
 // Route::match(['GET','POST'],'/payment/callback', [PaymobPaymentController::class, 'callBack']);
 
-Route::post('/payment/process', [StripePaymentController::class, 'paymentProcess']);
-Route::match(['GET','POST'],'/payment/callback', [StripePaymentController::class, 'callBack']);
+Route::post('/payment/process', [AlrajhiPaymentController::class, 'paymentProcess']);
+Route::match(['GET','POST'],'/payment/callback', [AlrajhiPaymentController::class, 'callBack']);

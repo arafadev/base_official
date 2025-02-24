@@ -24,6 +24,14 @@ return [
         'BASE_URL' => 'https://api.stripe.com',
         'SECRET_KEY' => 'sk_test_51Qw5F1RpaOC5Sylaq4YdtXQNPxqrE4rnmQTZA3R2vQowTsYea3ScOMdJ40eRfdTJ4uqDv0GHv2vopz1Yfxyna9mx00aWBfv9g1',
     ],
+    'Alrajhibank' => [
+        'BASE_URL' => 'https://securepayments.alrajhibank.com.sa',
+        'TRANSPORTAL_ID' => 'Ity1MyYZ17Xhr75',
+        'PASSWORD' => 'B8oFN!M@!05dg7r',
+        'ENCRYPTION_KEY' => '42904225553342904225553342904225',
+        'IV' => 'PGKEYENCDECIVSPC',
+        'SECRET_KEY' => 'sk_test_51Qw5F1RpaOC5Sylaq4YdtXQNPxqrE4rnmQTZA3R2vQowTsYea3ScOMdJ40eRfdTJ4uqDv0GHv2vopz1Yfxyna9mx00aWBfv9g1',
+    ],
     'Paypal' => [
         
         // 'sandbox_url_for_login' => 'https://sandbox.paypal.com',         //TODO click on login with paypal as a business account

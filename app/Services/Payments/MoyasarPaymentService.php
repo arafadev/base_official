@@ -41,8 +41,6 @@ class MoyasarPaymentService extends BasePaymentService implements PaymentGateway
 
        $responseData = $response->getData(true);
 
-
-
         //! this is an example of how to save transaction data in database
         (new PaymentTransactionService())->createPaymentTransaction(
            $responseData['data']['amount'],
