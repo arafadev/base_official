@@ -28,9 +28,13 @@ class AlrajhiPaymentController extends Controller
     public function callBack(Request $request): \Illuminate\Http\RedirectResponse
     {
         $response = $this->paymentGateway->callBack($request);
-        if ($response) {
 
-            return redirect()->route('payment.success');
+        if ($response) {
+            return redirect()->route('payment.success', [
+                'status'         => 'success',
+                'transaction_id' => $request->paymentid,
+                'msg'            => __('apis.payment_success')
+            ]);
         }
         return redirect()->route('payment.failed');
     }
@@ -38,8 +42,6 @@ class AlrajhiPaymentController extends Controller
 
     public function success(Request $request)
     {
-
-        $token = $request->get('token');
 
         $status = in_array($request->status, [
             'success',

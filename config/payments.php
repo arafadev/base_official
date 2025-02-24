@@ -30,7 +30,12 @@ return [
         'PASSWORD' => 'B8oFN!M@!05dg7r',
         'ENCRYPTION_KEY' => '42904225553342904225553342904225',
         'IV' => 'PGKEYENCDECIVSPC',
-        'SECRET_KEY' => 'sk_test_51Qw5F1RpaOC5Sylaq4YdtXQNPxqrE4rnmQTZA3R2vQowTsYea3ScOMdJ40eRfdTJ4uqDv0GHv2vopz1Yfxyna9mx00aWBfv9g1',
+
+        //^ use this data for only testing
+        'TEST_CARD_NUMBER'  => '5105105105105100',
+        'TEST_EXPIRY_DATE'  => '02/28',
+        'TEST_CVV'  => '123',
+        'TEST_OTP'  => '123123',
     ],
     'Paypal' => [
         

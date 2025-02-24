@@ -105,7 +105,6 @@ class AlRajhiService extends BasePaymentService implements PaymentGatewayInterfa
     {
         $tran_data = $this->encryptionService->decrypt($request->get('trandata'));
 
-
         $response = urldecode($tran_data);
         $data = json_decode($response, true);
 
