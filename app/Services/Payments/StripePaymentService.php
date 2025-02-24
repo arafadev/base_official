@@ -68,7 +68,7 @@ class StripePaymentService extends BasePaymentService implements PaymentGatewayI
         // ]));
         return [
             'status' => $success,
-            'session_id' => $session_id,
+            'transaction_id' => $session_id,
         ];
      
     }

@@ -116,7 +116,7 @@ class AlRajhiService extends BasePaymentService implements PaymentGatewayInterfa
             //     ]
             // ));
 
-            return true;
+            return ['status'    => true , 'transaction_id'  => $request->paymentid];
         }
 
         return false;

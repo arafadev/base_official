@@ -42,7 +42,7 @@ class TapService extends BasePaymentService implements PaymentGatewayInterface
 
         $responseData = json_decode($response->getContent(), true);
         
-        //! this is an example of how to save transaction data in database
+
         (new PaymentTransactionService())->createPaymentTransaction(
            $responseData['data']['amount'],
             PaymentTransactions::PAYORDER,
@@ -66,7 +66,7 @@ class TapService extends BasePaymentService implements PaymentGatewayInterface
         return ['success' => false, 'url' => route('payment.failed')];
     }
 
-    public function callBack(Request $request): bool
+    public function callBack(Request $request)
     {
         $chargeId = $request->input('tap_id');  // tap_id is the transaction_id that tap payment gateway send to us in the callback request
 
@@ -79,7 +79,7 @@ class TapService extends BasePaymentService implements PaymentGatewayInterface
         // ]));  // store response in file to show all response (this for debugging)
 
         if($response_data['success'] && $response_data['data']['status'] == 'CAPTURED') {
-            return true;
+            return ['status' => true, 'transaction_id' => $response_data['data']['id']];
         }
         return false;
     }

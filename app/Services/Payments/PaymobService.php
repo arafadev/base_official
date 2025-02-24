@@ -75,14 +75,14 @@ class PaymobService extends BasePaymentService implements PaymentGatewayInterfac
         return ['success' => false, 'url' => route('payment.failed')];
     }
 
-    public function callBack(Request $request): bool
+    public function callBack(Request $request)
     {
         $response = $request->all();
 
         // Storage::put('paymob_response.json', json_encode($request->all())); // store response in file to show all response (this for debugging)
 
         if (isset($response['success']) && $response['success'] === 'true') {
-            return true;
+            return ['status' => true, 'transaction_id' => $response['id'] ];
         }
         return false;
     }

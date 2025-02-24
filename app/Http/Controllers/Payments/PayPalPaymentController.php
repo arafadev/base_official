@@ -47,8 +47,6 @@ class PayPalPaymentController extends Controller
     public function success(Request $request)
     {
 
-        $token = $request->get('token');
-
         $status = in_array($request->status, [
             'success',
             'failed',
@@ -56,7 +54,7 @@ class PayPalPaymentController extends Controller
 
         // 👇👇 write your logic here (check transaction status here and update it in database , send email, notify user, etc...)👇👇
 
-        return view('payments.success', ['status'   => $request->status,  'transaction_id' => $request->transaction_id]);
+        return view('payments.success', ['status'   => $request->status,  'transaction_id' => $request->get('token')]);
     }
 
     public function failed()

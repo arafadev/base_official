@@ -43,23 +43,22 @@ class MyfatoorahPaymentService extends BasePaymentService implements PaymentGate
 
         $responseData = $response->getData(true)['data'];
 
-
         //TODO => Custom payment transaction service to save transaction data in database
-        // (new PaymentTransactionService())->createPaymentTransaction(
-        //     $request->InvoiceValue,
-        //     PaymentTransactions::PAYORDER,
-        //     'App\Models\Order', // transactionable_type
-        //     1 , // transactionable_id
-        //     $responseData['Data']['InvoiceId'],
-        //     $responseData,
-        //     PaymentGatwaysEnums::MYFATOORAH,
-        //     $request->DisplayCurrencyIso,
-        //     [
-        //         'user_id' => 1,  //TODO id of auth user here...
-        //         'item_id' => 1,  // TODO item_id of order | reservation | product ...etc
-        //         'type' =>  'order',  //TODO course  | lecture | exam | reservation | product ...etc
-        //     ]
-        // );
+        (new PaymentTransactionService())->createPaymentTransaction(
+            $request->InvoiceValue,
+            PaymentTransactions::PAYORDER,
+            'App\Models\Order', // transactionable_type
+            1 , // transactionable_id
+            $responseData['Data']['InvoiceId'],
+            $responseData,
+            PaymentGatwaysEnums::MYFATOORAH,
+            $request->DisplayCurrencyIso,
+            [
+                'user_id' => 1,  //TODO id of auth user here...
+                'item_id' => 1,  // TODO item_id of order | reservation | product ...etc
+                'type' =>  'order',  //TODO course  | lecture | exam | reservation | product ...etc
+            ]
+        );
 
         //handel payment response data and return it
         if ($response->getData(true)['success']) {
@@ -80,10 +79,10 @@ class MyfatoorahPaymentService extends BasePaymentService implements PaymentGate
         $response=$this->buildRequest('POST', '/v2/getPaymentStatus', $data);
         $response_data=$response->getData(true);
 
-        Storage::put('myfatoorah_response.json',json_encode([
-            'myfatoorah_callback_response'=>$request->all(),
-            'myfatoorah_response_status'=>$response_data
-        ]));   
+        // Storage::put('myfatoorah_response.json',json_encode([
+        //     'myfatoorah_callback_response'=>$request->all(),
+        //     'myfatoorah_response_status'=>$response_data
+        // ]));   
 
         if($response_data['data']['Data']['InvoiceStatus']==='Pending'){
             return ['status' => true, 'transaction_id' => $response_data['data']['Data']['InvoiceId']];

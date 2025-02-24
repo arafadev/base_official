@@ -68,12 +68,13 @@ class PaypalPaymentService extends BasePaymentService implements PaymentGatewayI
     {
         $token = $request->get('token');  // transaction_id
         $response = $this->buildRequest('POST', "/v2/checkout/orders/$token/capture");
+
         // Storage::put('paypal.json', json_encode([
         //     'callback_response' => $request->all(),
         //     'capture_response' => $response
         // ]));
         if ($response->getData(true)['success'] && $response->getData(true)['data']['status'] === 'COMPLETED') {
-            return true;
+            return ['status' => true, 'transaction_id' => $token];
         }
         return false;
     }

@@ -46,12 +46,10 @@ class MoyasarPaymentController extends Controller
     public function success(Request $request)
     {
 
-        $token = $request->get('token');
-
-        $status = in_array($request->status, [
-            'success',
-            'failed',
-        ]) ? $request->status : 'failed';
+        // $status = in_array($request->status, [
+        //     'success',
+        //     'failed',
+        // ]) ? $request->status : 'failed';
 
         // 👇👇 write your logic here (check transaction status here and update it in database , send email, notify user, etc...)👇👇
 

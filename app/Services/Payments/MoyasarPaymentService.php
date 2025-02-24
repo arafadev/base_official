@@ -73,28 +73,12 @@ class MoyasarPaymentService extends BasePaymentService implements PaymentGateway
     {
 
         $response_status=$request->get('status');
-        Storage::put('moyasar_response.json', json_encode($request->all()));
+        // Storage::put('moyasar_response.json', json_encode($request->all()));
         if(isset($response_status)&&$response_status==='paid') {
             //save order data and return true
             return true;
        }
        return false;
 
-
-
-        // $chargeId = $request->input('tap_id');  // tap_id is the transaction_id that tap payment gateway send to us in the callback request
-
-        // $response = $this->buildRequest('GET', "/v2/charges/$chargeId");
-        // $response_data = $response->getData(true);
-
-        // // Storage::put('tap_response.json',json_encode([
-        // //     'callback_response' => $request->all(),
-        // //     'response' => $response_data
-        // // ]));  // store response in file to show all response (this for debugging)
-
-        // if($response_data['success'] && $response_data['data']['status'] == 'CAPTURED') {
-        //     return true;
-        // }
-        // return false;
     }
 }

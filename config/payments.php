@@ -14,7 +14,7 @@ return [
     ],
     'Tap' => [
         'BASE_URL' => 'https://api.tap.company',
-        'SECRET_KEY' => 'sk_test_3X4XwzWruRdFxqhhgDcdmddGqNQ57YJyBc2khmfm',
+        'API_KEY' => 'sk_test_FtYkeTOXGvwQsEUl9KVxNRAS',
     ],
     'Moyasar' => [
         'BASE_URL' => 'https://api.moyasar.com',
