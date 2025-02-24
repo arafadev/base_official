@@ -20,13 +20,17 @@ return [
         'BASE_URL' => 'https://api.moyasar.com',
         'SECRET_KEY' => 'sk_test_3X4XwzWruRdFxqhhgDcdmddGqNQ57YJyBc2khmfm',
     ],
+    'Stripe' => [
+        'BASE_URL' => 'https://api.stripe.com',
+        'SECRET_KEY' => 'sk_test_51Qw5F1RpaOC5Sylaq4YdtXQNPxqrE4rnmQTZA3R2vQowTsYea3ScOMdJ40eRfdTJ4uqDv0GHv2vopz1Yfxyna9mx00aWBfv9g1',
+    ],
     'Paypal' => [
         
-        'sandbox_url_for_login' => 'https://sandbox.paypal.com',         //TODO click on login with paypal as a business account
-        'business_email'    => 'sb-n4h7n30375801@business.example.com',  // business account email
-        'business_password' => ')K2k_@RT',                               // business account password
-        'personal_email'    => 'sb-3gaao32962851@personal.example.com',  // personl account email
-        'personal_password'    => 'D=W,J;n8',                            // personl account password
+        // 'sandbox_url_for_login' => 'https://sandbox.paypal.com',         //TODO click on login with paypal as a business account
+        // 'business_email'    => 'sb-n4h7n30375801@business.example.com',  // business account email
+        // 'business_password' => ')K2k_@RT',                               // business account password
+        // 'personal_email'    => 'sb-3gaao32962851@personal.example.com',  // personl account email
+        // 'personal_password'    => 'D=W,J;n8',                            // personl account password
 
         'BASE_URL' => 'https://api-m.sandbox.paypal.com',                // LIVE URL: https://api-m.paypal.com
         'CLIENT_ID' => 'Ad3sysbLAj6oLZyQPLlzQbHTLEr-rZwXA-sScfR7sWV30pbvJVc11m1Wyq4Vak7okNm4A0IE9iEAoqFX',
